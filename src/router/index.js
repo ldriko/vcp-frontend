@@ -15,6 +15,11 @@ const routes = [
         path: '/forget-password',
         name: 'forgetPW',
         component: () => import("../views/PasswordResetPage.vue")
+    },
+    {
+        path: '/pulihkan',
+        name: 'pulihkan',
+        component: () => import("../views/PulihkanPage.vue")
     }
 ];
 

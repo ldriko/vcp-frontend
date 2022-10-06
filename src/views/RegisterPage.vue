@@ -1,7 +1,7 @@
 <template>
     <div class="flex p-5 px-20 w-screen">
       <div>
-        <img src="../assets/login-img.png" class="h-full w-100" alt="" />
+        <!-- <img src="../assets/login-img.png" class="h-full w-100" alt="" /> -->
       </div>
       <div class="font-quicksand w-8/12 ml-10 py-3">
         <TittleName title="Yuk Daftar"/>
