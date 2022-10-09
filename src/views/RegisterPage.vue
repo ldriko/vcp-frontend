@@ -1,78 +1,82 @@
 <script setup>
+import { Form as VeeForm } from 'vee-validate'
+import * as Yup from 'yup'
 import TittleName from '@/components/TittleName.vue'
-import ButtonPrimary from '@/components/ButtonPrimary.vue'
-import ButtonSecondary from '@/components/ButtonSecondary.vue'
-import { inject, reactive } from 'vue'
-import GenderInput from '@/components/form/GenderInput'
+import TextField from '@/components/form/TextField'
+import AppButton from '@/components/AppButton'
+import { inject, ref } from 'vue'
+import { useSessionStore } from '@/stores/session'
+import router from '@/router'
 
-const $axios = inject('$axios')
+const axios = inject('$axios')
+const sessionStore = useSessionStore()
 
-const form = reactive({
-  name: '',
-  email: '',
-  password: '',
-  gender: 0
+const schema = Yup.object().shape({
+  name: Yup.string()
+      .required('Nama harus diisi'),
+  email: Yup.string()
+      .required('Alamat email harus diisi')
+      .email('Alamat email harus valid'),
+  password: Yup.string()
+      .required('Password harus diisi')
+      .min(8, 'Jumlah password minimal 8 karakter'),
+  password_confirmation: Yup.string()
+      .required('Konfirmasi password anda')
+      .oneOf([Yup.ref('password')], 'Konfirmasi password tidak sesuai')
 })
 
-const register = async () => {
-  // Cookies disek
-  await $axios.get('/../sanctum/csrf-cookie')
+const isLoading = ref(false)
 
-  // Baru request register
+const gotoLogin = () => router.push('/login')
+
+const submit = async (values) => {
+  if (isLoading.value) return
+
+  isLoading.value = true
+
+  await axios.get('/../sanctum/csrf-cookie')
+
+  try {
+    const { data } = await axios.post('/register', {
+      ...values,
+      gender: 0
+    })
+
+    sessionStore.setUser(data)
+    sessionStore.setIsLoggedIn(true)
+
+    await router.push('/')
+  } catch (e) {
+    console.log(e)
+  }
+
+  isLoading.value = false
 }
 </script>
 
 <template>
-  <div class="flex p-5 px-20 w-screen">
-    <div>
-      <!-- <img src="../assets/login-img.png" class="h-full w-100" alt=""/> -->
-    </div>
-    <div class="font-quicksand w-8/12 ml-10 py-3">
-      <TittleName title="Yuk Daftar"/>
-      <p class="mt-2 text-base font-medium">Sebelum kamu Masuk ke Belajar pastikan daftar dahulu ya </p>
-
-      <div class="mt-2">
-        <label class="font-bold text-base" for="name">Nama Lengkap</label><br>
-        <input id="name"
-               v-model="form.name"
-               class="border-solid border 12 rounded-lg px-1 py-2 w-full"
-               placeholder="Masukkan Nama Lengkap kamu"
-               type="text"/>
-      </div>
-
-      <div class="mt-2">
-        <label class="font-bold text-base" for="email">Email</label><br>
-        <input id="email"
-               v-model="form.email"
-               class="border-solid border 12 rounded-lg px-1 py-2 w-full"
-               placeholder="Masukkan email kamu"
-               type="email"/>
-      </div>
-
-      <div class="mt-2">
-        <label class="font-bold text-base" for="password">Password</label><br>
-        <input type="password"
-               placeholder="Masukkan password"
-               class="border-solid border 12 rounded-lg px-1 py-2 w-full"
-               id="password"/>
-      </div>
-
-      <gender-input v-model="form.gender"/>
-
-
-      <div class="pt-4">
-        <router-link to="">
-          <ButtonPrimary title="Buat Akun" @click="register"/>
-        </router-link>
-        atau
-        <router-link to="/">
-          <ButtonSecondary title="Masuk Kembali"/>
-        </router-link>
-      </div>
-
+  <div class="flex p-5 px-20">
+    <div class="font-quicksand font-medium w-8/12 ml-10 py-3">
+      <tittle-name title="Yuk Daftar"/>
+      <div class="mb-5">Sebelum kamu masuk ke Belajar, daftarkan akunmu terlebih dahulu ya</div>
+      <vee-form :validation-schema="schema" @submit="submit">
+        <text-field label="Nama" name="name" placeholder="Masukkan nama lengkap anda"/>
+        <text-field label="Alamat email" name="email" placeholder="Masukkan alamat email anda"/>
+        <text-field label="Password"
+                    name="password"
+                    placeholder="Masukkan password yang ingin digunakan"
+                    type="password"/>
+        <text-field label="Konfirmasi Password"
+                    name="password_confirmation"
+                    placeholder="Masukkan ulang password"
+                    type="password"/>
+        <div class="mt-10">
+          <app-button :is-disabled="isLoading" :is-loading="isLoading" color="primary" type="submit">Buat Akun
+          </app-button>
+          <span class="mx-5">atau</span>
+          <app-button :is-disabled="isLoading" :is-loading="isLoading" color="secondary" @click="gotoLogin">Masuk</app-button>
+        </div>
+      </vee-form>
     </div>
   </div>
 </template>
-  
-  
-  
