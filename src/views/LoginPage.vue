@@ -1,58 +1,69 @@
+<script setup>
+import { Form as VeeForm } from 'vee-validate'
+import * as Yup from 'yup'
+import TittleName from '@/components/TittleName.vue'
+import TextField from '@/components/form/TextField'
+import AppButton from '@/components/AppButton'
+import { inject, ref } from 'vue'
+import { useSessionStore } from '@/stores/session'
+import router from '@/router'
+
+const axios = inject('$axios')
+const sessionStore = useSessionStore()
+
+const schema = Yup.object().shape({
+  email: Yup.string()
+      .required('Alamat email harus diisi'),
+  password: Yup.string()
+      .required('Password harus diisi')
+})
+
+const isLoading = ref(false)
+
+const gotoRegister = () => router.push('/register')
+
+const submit = async (values) => {
+  if (isLoading.value) return
+
+  isLoading.value = true
+
+  await axios.get('/../sanctum/csrf-cookie')
+
+  try {
+    const { data } = await axios.post('/login', values)
+
+    sessionStore.setUser(data)
+    sessionStore.setIsLoggedIn(true)
+
+    await router.push('/')
+  } catch (e) {
+    console.log(e)
+  }
+
+  isLoading.value = false
+}
+</script>
+
 <template>
-  <div class="flex p-5 px-20 w-screen">
-    <div>
-      <!-- <img src="../assets/login-img.png" class="h-full w-100" alt="" /> -->
-    </div>
-    <div class="font-quicksand w-8/12 ml-10 py-3">
-      <TittleName title="Selamat Datang" />
-      <p class="mt-2 text-base font-medium">
-        Sebelum kamu Masuk ke  Belajar pastikan daftar dahulu ya  
-      </p>
-
-      <div class="mt-2">
-        <label class="font-bold text-base" for="username">Email</label><br />
-        <input
-          type="text"
-          placeholder="Masukkan Email kamu"
-          class="border-solid border 12 rounded-lg px-1 py-2 w-full"
-          id="username"
-        /><br />
-      </div>
-
-      <div class="mt-2">
-        <label class="font-bold text-base" for="password">Password</label
-        ><br/>
-        <input
-          type="password"
-          placeholder="Masukkan Password kamu"
-          class="border-solid border 12 rounded-lg px-1 py-2 w-full"
-          id="password"
-        />
-      </div>
-
-
-      <router-link to="/forget-password"><p class="underline decoration-solid text-regal-green mt-2">Lupa Password?</p></router-link>
-
-      <div class="pt-4">
-          <router-link to=""> <ButtonPrimary title="Masuk" /></router-link> atau 
-          <router-link to="/register" > <ButtonSecondary title="Buat Akun" /></router-link>
-      </div>
-   
+  <div class="flex p-5 px-20">
+    <div class="font-quicksand font-medium w-8/12 ml-10 py-3">
+      <tittle-name title="Selamat Datang"/>
+      <div class="mb-5">Masukkan detil akunmu terlebih dahulu</div>
+      <vee-form :validation-schema="schema" @submit="submit">
+        <text-field label="Alamat email" name="email" placeholder="Masukkan alamat emailmu"/>
+        <text-field label="Password"
+                    name="password"
+                    placeholder="Masukkan password yang ingin digunakan"
+                    type="password"/>
+        <div class="mt-10">
+          <app-button :is-disabled="isLoading" :is-loading="isLoading" color="primary" type="submit">Masuk
+          </app-button>
+          <span class="mx-5">atau</span>
+          <app-button :is-disabled="isLoading" :is-loading="isLoading" color="secondary" @click="gotoRegister">
+            Buat Akun
+          </app-button>
+        </div>
+      </vee-form>
     </div>
   </div>
 </template>
-
-<script>
-import "../assets/tailwind.css";
-import TittleName from "@/components/TittleName.vue";
-import ButtonPrimary from "@/components/ButtonPrimary.vue";
-import ButtonSecondary from "@/components/ButtonSecondary.vue";
-
-export default {
-  components: {
-    TittleName,
-    ButtonPrimary,
-    ButtonSecondary,
-  },
-};
-</script>
