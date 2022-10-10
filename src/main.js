@@ -1,9 +1,17 @@
+import { createPinia } from 'pinia'
 import { createApp } from 'vue'
-import App from './App.vue'
 import router from './router'
+import axios from 'axios'
+import App from './App.vue'
 import './assets/tailwind.css'
 
-// createApp(App).mount('#app')
-const app = createApp(App)
-app.use(router)
-app.mount('#app')
+const pinia = createPinia()
+
+axios.defaults.withCredentials = true
+axios.defaults.baseURL = 'http://localhost/v1/'
+
+createApp(App)
+  .use(pinia)
+  .use(router)
+  .provide('$axios', axios)
+  .mount('#app')
