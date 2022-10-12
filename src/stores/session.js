@@ -12,7 +12,9 @@ export const useSessionStore = defineStore('session', () => {
   const getUser = async () => {
     const axios = inject('$axios')
     const response = await axios.get('/user').catch(() => null)
-    if (response?.data) setUser(response.data)
+
+    setUser(response?.data)
+    setIsLoggedIn(!!response?.data)
   }
 
   const setIsLoggedIn = (value) => isLoggedIn.value = value

@@ -10,7 +10,8 @@ module.exports = {
       },
       width: {
         100: "22rem",
-        57 : "32rem"
+        57 : "32rem",
+        "console-sidebar": "296px"
       },
       fontFamily: {
         'quicksand': ['"Quicksand"', 'cursive'],

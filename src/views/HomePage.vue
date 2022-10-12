@@ -1,4 +1,9 @@
+<script setup>
+import HomeNavbar from '@/components/Home/HomeNavbar'
+</script>
+
 <template>
+  <home-navbar/>
   <div class="font-quicksand">
     <p class="text-center font-semibold text-5xl mt-32">
       Belajar lebih mudah dan <br />

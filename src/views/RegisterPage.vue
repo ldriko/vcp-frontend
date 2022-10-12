@@ -2,7 +2,7 @@
 import { Form as VeeForm } from 'vee-validate'
 import * as Yup from 'yup'
 import TittleName from '@/components/TittleName.vue'
-import TextField from '@/components/form/TextField'
+import TextField from '@/components/Form/TextField'
 import AppButton from '@/components/AppButton'
 import { inject, ref } from 'vue'
 import { useSessionStore } from '@/stores/session'
