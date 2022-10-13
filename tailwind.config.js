@@ -19,8 +19,12 @@ module.exports = {
       colors: {
         'regal-green' : '#0BA01A',
         'min-gray' : '#4E4E4E',
-        'light-green' :  '#00D215'
+        'light-green' :  '#00D215',
+        // 'soft-green' : '#0ba01a1a'
 
+      },
+      backgroundImage: {
+        'dekstop-display': "url('./src/assets/display.png')"
       }
     },
   },
