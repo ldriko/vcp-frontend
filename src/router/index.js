@@ -7,6 +7,16 @@ const routes = [
     component: () => import('@/views/LoginPage.vue')
   },
   {
+    path: '/',
+    name: 'index',
+    component: () => import('../views/IndexPage.vue')
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('../views/LoginPage.vue')
+  },
+  {
     path: '/register',
     name: 'register',
     component: () => import('@/views/RegisterPage.vue')
@@ -40,10 +50,16 @@ const routes = [
         path: 'groups',
         name: 'groups',
         component: () => import('@/views/Console/Groups/GroupsPage')
-      },
+      }
     ]
+  },
+  {
+    path: '/jurnal',
+    name: 'jurnal',
+    component: () => import('../views/JurnalPage.vue')
   }
 ]
+
 
 const router = createRouter({
   history: createWebHistory(),
