@@ -5,7 +5,7 @@ import ConsoleSidebar from '@/components/Console/ConsoleSidebar'
 <template>
   <div class="min-h-screen flex">
     <console-sidebar/>
-    <div class="flex-grow">
+    <div class="flex-grow p-10">
       <slot/>
     </div>
   </div>
