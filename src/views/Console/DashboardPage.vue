@@ -1,7 +1,7 @@
 <script setup>
-import ConsoleLayout from '@/components/Layouts/ConsoleLayout'
+import ConsoleTitle from '@/views/Console/ConsoleTitle'
 </script>
 
 <template>
-  <console-layout>Dashboard</console-layout>
+  <console-title>Dashboard</console-title>
 </template>

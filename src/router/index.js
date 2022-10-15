@@ -49,13 +49,18 @@ const routes = [
   {
     path: '/console',
     name: 'console',
-    component: () => import('@/views/Console/DashboardPage'),
+    component: () => import('@/views/Console/ConsolePage'),
     children: [
       {
         path: 'dashboard',
         name: 'console-dashboard',
         component: () => import('@/views/Console/DashboardPage')
-      }
+      },
+      {
+        path: 'groups',
+        name: 'groups',
+        component: () => import('@/views/Console/Groups/GroupsPage')
+      },
     ]
   }
 ]
