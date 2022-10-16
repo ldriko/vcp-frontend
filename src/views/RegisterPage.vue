@@ -45,7 +45,7 @@ const submit = async (values) => {
     sessionStore.setUser(data)
     sessionStore.setIsLoggedIn(true)
 
-    await router.push('/')
+    await router.push({ name: 'console-dashboard' })
   } catch (e) {
     console.log(e)
   }
@@ -74,7 +74,8 @@ const submit = async (values) => {
           <app-button :is-disabled="isLoading" :is-loading="isLoading" color="primary" type="submit">Buat Akun
           </app-button>
           <span class="mx-5">atau</span>
-          <app-button :is-disabled="isLoading" :is-loading="isLoading" color="secondary" @click="gotoLogin">Masuk</app-button>
+          <app-button :is-disabled="isLoading" :is-loading="isLoading" color="secondary" @click="gotoLogin">Masuk
+          </app-button>
         </div>
       </vee-form>
     </div>

@@ -35,7 +35,7 @@ const submit = async (values) => {
     sessionStore.setUser(data)
     sessionStore.setIsLoggedIn(true)
 
-    await router.push('/')
+    await router.push({ name: 'console' })
   } catch (e) {
     console.log(e)
   }
