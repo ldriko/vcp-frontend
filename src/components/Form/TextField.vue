@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps, toRef } from 'vue'
+import { defineExpose, defineProps, ref, toRef } from 'vue'
 import { useField } from 'vee-validate'
 
 const props = defineProps({
@@ -26,18 +26,18 @@ const props = defineProps({
   placeholder: {
     type: String,
     default: ''
+  },
+  fit: {
+    type: Boolean,
+    default: false
+  },
+  disabled: {
+    type: Boolean,
+    default: false
   }
 })
-// const emit = defineEmits(['update:modelValue'])
-//
-// const model = ref(props.modelValue)
-//
-// watch(model, () => {
-//   emit('update:modelValue', model.value)
-// })
 
-props
-
+const input = ref(null)
 const name = toRef(props, 'name')
 
 const {
@@ -49,21 +49,36 @@ const {
 } = useField(name, undefined, {
   initialValue: props.value
 })
+
+const changeValue = (value) => {
+  console.log(value)
+  input.value.value = value
+  input.value.dispatchEvent(new Event('input'))
+}
+
+defineExpose({
+  changeValue
+})
 </script>
 
 <template>
   <div :class="{ 'has-error': !!errorMessage, success: meta.valid }" class="mb-5 flex flex-col">
-    <label :for="name" class="mb-1">{{ label }}</label>
-    <input
-        :name="name"
-        :id="name"
-        :type="type"
-        :value="inputValue"
-        :placeholder="placeholder"
-        class="border-solid border 12 rounded-lg py-2 px-3 w-full"
-        @input="handleChange"
-        @blur="handleBlur"
-    />
+    <label :for="name" class="font-semibold mb-1">{{ label }}</label>
+    <div>
+      <input
+          :id="name"
+          ref="input"
+          :class="{'w-full': !props.fit, 'w-auto': props.fit}"
+          :disabled="props.disabled"
+          :name="name"
+          :placeholder="placeholder"
+          :type="type"
+          :value="inputValue"
+          class="border-solid border 12 rounded-lg py-2 px-3"
+          @blur="handleBlur"
+          @input="handleChange"
+      />
+    </div>
     <small class="text-red-400" v-show="errorMessage || meta.valid">
       {{ errorMessage || successMessage }}
     </small>

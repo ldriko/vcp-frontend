@@ -11,7 +11,7 @@ const props = defineProps({
 
 <template>
   <h1 v-if="props.title !== null" class="text-white text-opacity-50 mx-3 mb-8 uppercase">{{ props.title }}</h1>
-  <ul class="space-y-4">
+  <ul class="space-y-2">
     <slot/>
   </ul>
 </template>

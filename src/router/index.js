@@ -50,6 +50,14 @@ const routes = [
         meta: {
           requiresAuth: true
         }
+      },
+      {
+        path: 'groups/create',
+        name: 'groups-create',
+        component: () => import('@/views/Console/Groups/CreatePage'),
+        meta: {
+          requiresAuth: true
+        }
       }
     ]
   },
@@ -65,8 +73,9 @@ const router = createRouter({
   routes
 })
 
-router.beforeEach((to) => {
+router.beforeResolve((to) => {
   const sessionStore = useSessionStore()
+
   if (to.meta.requiresAuth && !sessionStore.isLoggedIn) return '/'
 })
 
