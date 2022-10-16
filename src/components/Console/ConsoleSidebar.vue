@@ -11,7 +11,7 @@ import ConsoleSidebarMenuItem from '@/components/Console/ConsoleSidebarMenuItem'
       <console-sidebar-menu-item icon="home">Beranda</console-sidebar-menu-item>
       <console-sidebar-menu-item icon="document-copy">Temukan Jurnal</console-sidebar-menu-item>
       <console-sidebar-menu-item icon="document-text">Jurnal Saya</console-sidebar-menu-item>
-      <console-sidebar-menu-item icon="people">Grup Saya</console-sidebar-menu-item>
+      <console-sidebar-menu-item icon="people" to="groups">Grup Saya</console-sidebar-menu-item>
     </console-sidebar-menu>
   </nav>
 </template>

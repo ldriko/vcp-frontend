@@ -3,5 +3,7 @@ import ConsoleLayout from '@/components/Layouts/ConsoleLayout'
 </script>
 
 <template>
-  <console-layout><router-view/></console-layout>
+  <console-layout>
+    <router-view/>
+  </console-layout>
 </template>

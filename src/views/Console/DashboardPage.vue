@@ -1,7 +1,7 @@
 <script setup>
-
+import ConsoleTitle from '@/views/Console/ConsoleTitle'
 </script>
 
 <template>
-  <p>dashboard</p>
+  <console-title>Dashboard</console-title>
 </template>

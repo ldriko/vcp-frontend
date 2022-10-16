@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { useSessionStore } from '@/stores/session'
 
 const routes = [
   {
@@ -35,25 +36,43 @@ const routes = [
     path: '/console',
     name: 'console',
     component: () => import('@/views/Console/ConsolePage'),
+    meta: {
+      requiresAuth: true
+    },
     children: [
       {
         path: 'dashboard',
         name: 'console-dashboard',
-        component: () => import('@/views/Console/DashboardPage')
+        component: () => import('@/views/Console/DashboardPage'),
+        meta: {
+          requiresAuth: true
+        }
       },
       {
-        path: 'create-jurnal',
-        name: 'create-jurnal',
-        component: () => import('@/views/Console/CreateJurnalPage.vue')
+        path: 'groups',
+        name: 'groups',
+        component: () => import('@/views/Console/Groups/GroupsPage'),
+        meta: {
+          requiresAuth: true
+        }
       }
-]},
- 
+    ]
+  },
+  {
+    path: '/jurnal',
+    name: 'jurnal',
+    component: () => import('../views/JurnalPage.vue')
+  }
 ]
-
 
 const router = createRouter({
   history: createWebHistory(),
   routes
+})
+
+router.beforeEach((to) => {
+  const sessionStore = useSessionStore()
+  if (to.meta.requiresAuth && !sessionStore.isLoggedIn) return '/'
 })
 
 export default router
