@@ -12,7 +12,6 @@ const emit = defineEmits(['update:modelValue'])
 const gender = ref(props.modelValue)
 
 watch(gender, () => {
-  console.log('test', gender.value)
   emit('update:modelValue', Number(gender.value))
 })
 </script>
