@@ -53,7 +53,7 @@ const {
 
 <template>
   <div :class="{ 'has-error': !!errorMessage, success: meta.valid }" class="mb-5 flex flex-col">
-    <label :for="name" class="mb-1">{{ label }}</label>
+    <label :for="name" class="mb-1 font-semibold text-2xl">{{ label }}</label>
     <input
         :name="name"
         :id="name"

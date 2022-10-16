@@ -1,7 +1,7 @@
 <script setup>
-import ConsoleLayout from '@/components/Layouts/ConsoleLayout'
+
 </script>
 
 <template>
-  <console-layout>Dashboard</console-layout>
+  <p>dashboard</p>
 </template>

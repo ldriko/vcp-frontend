@@ -20,7 +20,8 @@ module.exports = {
         'regal-green' : '#0BA01A',
         'min-gray' : '#4E4E4E',
         'light-green' :  '#00D215',
-        // 'soft-green' : '#0ba01a1a'
+        'soft-green' : '#D0ECD3',
+        'gray-green' : '#E6F5E8'
 
       },
       backgroundImage: {

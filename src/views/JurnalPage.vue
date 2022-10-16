@@ -1,32 +1,10 @@
-<script>
-import axios from "axios";
-import { onMounted, ref } from "vue";
-export default {
-  setup() {
-    //reactiive state
-    let jurnal = ref([]);
-
-    onMounted(() => {
-      //get data from api endpoint
-      axios
-        .get("/../v1/journals/vuu8-y2oy-fyii/pdf")
-        .then((result) => {
-          jurnal.value = result.data;
-        })
-        .catch((err) => {
-          console.log(err.response);
-        });
-    });
-
-    return {
-      jurnal,
-    };
-  },
-};
+<script setup>
+  import JournalSection from '@/components/JournalSection.vue'
+  import HomeFooter from '@/components/Home/HomeFooter.vue'
 </script>
 <template lang="">
   <div class="grid grid-cols-12 font-quicksand">
-    <div class="col-span-5 col-start-2">
+    <div class="col-span-6 col-start-2">
       <p class="font-semibold text-4xl mt-20">Temukan Jurnal Kamu Disini</p>
 
       <div class="border border-min-gray mt-9 rounded-xl flex p-1">
@@ -40,31 +18,18 @@ export default {
         </button>
       </div>
 
-      <p class="my-6">
+      <p class="my-6 text-2xl">
         Menemukan Hasil Dari <span class="font-bold">“Jurnal Kesehatan”</span>
       </p>
 
-      <div>
-        <div class="flex">
-          <p>Kesehatan</p>
-          <p>Ilmu Sosial</p>
-        </div>
-        <p>Pengaruh Kesehatan dan Ilmu Sosial Dalam Percintaan</p>
-        <p>
-          But land-intensive bioenergy often entails substantial carbon
-          emissions from land-use change as well Managing an effective
-          trajectory for land-intensive bioenergy will require an unusual mix of
-          policies
-        </p>
+      <JournalSection/>
+      <JournalSection/>
+      <JournalSection/>
+      <JournalSection/>
 
-        <div>
-          <button>view jurnal</button>
-          <button>Download</button>
-        </div>
-      </div>
     </div>
     <div></div>
-    <div class="col-span-4 mt-20">
+    <div class="col-span-3 mt-20">
       <p>Filter Berdasarkan :</p>
 
       <div class="border-b border-min-gray my-6"></div>
@@ -92,15 +57,15 @@ export default {
       </div>
       <div class="mt-8">
         <input type="checkbox" id="2017" name="2017" value="Bike" />
-      <label for="2017"> 2017</label><br />
+        <label for="2017"> 2017</label><br />
       </div>
 
       <div class="border-b border-min-gray my-6"></div>
-
-      
-    
     </div>
     <div></div>
+  </div>
+  <div class="mt-4">
+  <HomeFooter/>
   </div>
 </template>
 
