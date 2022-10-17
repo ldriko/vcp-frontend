@@ -2,12 +2,16 @@ import { defineStore } from 'pinia'
 import { inject, ref } from 'vue'
 
 export const useSessionStore = defineStore('session', () => {
-  const user = ref(JSON.parse(localStorage.getItem('user') ?? ''))
+  const userJson = localStorage.getItem('user')
+  const user = ref(userJson ? JSON.parse(userJson) : null)
   const isLoggedIn = ref(localStorage.getItem('isLoggedIn') ?? false)
 
   const setUser = (data) => {
     user.value = data
-    localStorage.setItem('user', JSON.stringify(data))
+
+    if (data) {
+      localStorage.setItem('user', JSON.stringify(data))
+    }
   }
 
   const getUser = async () => {
