@@ -11,6 +11,7 @@ module.exports = {
       width: {
         100: "22rem",
         57 : "32rem",
+        71 : "65rem",
         "console-sidebar": "296px"
       },
       fontFamily: {
