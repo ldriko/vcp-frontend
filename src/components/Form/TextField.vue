@@ -51,7 +51,6 @@ const {
 })
 
 const changeValue = (value) => {
-  console.log(value)
   input.value.value = value
   input.value.dispatchEvent(new Event('input'))
 }
@@ -63,7 +62,7 @@ defineExpose({
 
 <template>
   <div :class="{ 'has-error': !!errorMessage, success: meta.valid }" class="mb-5 flex flex-col">
-    <label :for="name" class="font-semibold mb-1 font-semibold text-2xl">{{ label }}</label>
+    <label :for="name" class="font-semibold mb-1 font-semibold">{{ label }}</label>
     <div>
       <input
           :id="name"

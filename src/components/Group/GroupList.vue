@@ -1,6 +1,6 @@
 <script setup>
 import GroupListItem from '@/components/Group/GroupListItem'
-import { defineProps, inject, onMounted, ref, watch } from 'vue'
+import { defineProps, inject, onMounted, onUnmounted, ref, watch } from 'vue'
 import AppIcon from '@/components/AppIcon'
 import AppButton from '@/components/AppButton'
 
@@ -43,6 +43,7 @@ watch(props, () => {
 })
 
 onMounted(fetch)
+onUnmounted(() => clearTimeout(fetchTimeout.value))
 </script>
 
 <template>

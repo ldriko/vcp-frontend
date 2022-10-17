@@ -1,13 +1,12 @@
 <script setup>
 import HomeNavbar from '@/components/Home/HomeNavbar'
-import HomeFooter from '@/components/Home/HomeFooter.vue'
-</script>
+import HomeFooter from '@/components/Home/HomeFooter.vue'</script>
 
 <template>
   <home-navbar/>
   <div class="font-quicksand">
     <p class="text-center font-semibold text-5xl mt-32">
-      Belajar lebih mudah dan <br />
+      Jourid lebih mudah dan <br/>
       <span class="text-regal-green">menyenangkan</span> dengan
       <span class="text-regal-green"> Education</span>
     </p>

@@ -5,7 +5,7 @@
       </div>
       <div class="font-quicksand w-8/12 ml-10 py-3">
         <TittleName title="Pulihkan Ulang Password kamu disini"/>
-        <p class="mt-2 text-base font-medium">Sebelum kamu Masuk ke  Belajar pastikan daftar dahulu ya </p>
+        <p class="mt-2 text-base font-medium">Sebelum kamu Masuk ke Jourid pastikan daftar dahulu ya </p>
   
         <div class="mt-2">
           <label class="font-bold text-base" for="username">Masukkan Password Baru</label><br>
@@ -14,7 +14,10 @@
        
         <div class="mt-2">
           <label class="font-bold text-base" for="namaLengkap">Ulangi Password Baru</label><br>
-          <input type="namaLengkap" placeholder="Ulangi Password kamu " class="border-solid border 12 rounded-lg px-1 py-2 w-full" id="password" />
+          <input id="password"
+                 class="border-solid border 12 rounded-lg px-1 py-2 w-full"
+                 placeholder="Ulangi Password kamu "
+                 type="text"/>
         </div>
 
         <div class="pt-4">
@@ -27,17 +30,17 @@
   
   <script>
 
-    import "../assets/tailwind.css";
-    import TittleName from "@/components/TittleName.vue";
-import ButtonPrimary from "@/components/ButtonPrimary.vue";
+  import '../assets/tailwind.css'
+  import TittleName from '@/components/TittleName.vue'
+  import ButtonPrimary from '@/components/ButtonPrimary.vue'
 
 
-    export default {
+  export default {
     components: {
-    TittleName,
-    ButtonPrimary
-}
-  };
+      TittleName,
+      ButtonPrimary
+    }
+  }
   </script>
   
   
