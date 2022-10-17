@@ -6,12 +6,14 @@ module.exports = {
       height: {
         full: "92vh",
         80 : "51rem",
-        31 : "31rem"
+        31 : "31rem",
+        78 : "20rem",
       },
       width: {
         100: "22rem",
         57 : "32rem",
         71 : "65rem",
+      
         "console-sidebar": "296px"
       },
       fontFamily: {
