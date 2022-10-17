@@ -5,6 +5,7 @@ import AppButton from '@/components/AppButton'
 import GroupChatMessage from '@/components/Group/GroupChatMessage'
 import { useSessionStore } from '@/stores/session'
 import GroupAction from '@/components/Group/GroupAction'
+import AppIcon from '@/components/AppIcon'
 
 const axios = inject('$axios')
 const baseUrl = axios.defaults.baseURL
@@ -53,9 +54,11 @@ const fetchChat = async () => {
 
 const send = () => {
   axios.post(`/groups/${props.group.id}/chat`, {
-    text: message.value
+    text: message.value,
+    journal_code: journal.value?.code
   }).then((response) => {
     message.value = ''
+    clearJournal()
     chat.value.push({ ...response.data, user: sessionStore.user })
     latestId.value = response.data.id
     clearTimeout(fetchRequest.value)
@@ -86,6 +89,24 @@ const exitGroup = async () => {
         emit('close')
       })
       .catch()
+}
+
+const showJournalCodeInput = ref(false)
+const journalCode = ref(null)
+const journal = ref(null)
+
+const getJournal = () => {
+  axios.get(`/journals/${journalCode.value}`)
+      .then(({ data }) => {
+        journal.value = data
+        showJournalCodeInput.value = false
+      })
+      .catch(() => journal.value = null)
+}
+
+const clearJournal = () => {
+  journalCode.value = ''
+  journal.value = null
 }
 
 watch(props, () => {
@@ -123,10 +144,32 @@ onUnmounted(() => {
         <li v-for="(message, index) in chat" :key="message.id">
           <group-chat-message :hide-name="chat[index - 1]?.user.id === message.user.id"
                               :text="message.text"
+                              :journal="message.journal"
                               :user="message.user"/>
         </li>
       </ul>
+      <div v-if="journal !== null" class="bg-white p-4 rounded-xl mb-3 relative">
+        <app-icon class="absolute top-0 right-0 m-2 cursor-pointer active:scale-95"
+                  name="tag-cross"
+                  @click="clearJournal"/>
+        <div class="font-bold text-regal-green">{{ journal.title }}</div>
+        <div class="font-semibold">Author: {{ journal.user.name }}</div>
+        <div>{{ journal.short_desc }}</div>
+      </div>
       <div class="flex gap-3">
+        <div class="relative">
+          <div v-if="showJournalCodeInput"
+               class="text-black absolute bg-white rounded-xl p-4 border border-solid bottom-full left-0 w-auto text-start mb-2 shadow">
+            <label class="mb-2 block">Masukkan kode jurnal yang ingin ditambahkan</label>
+            <div class="font-semibold select-none flex gap-2">
+              <input v-model="journalCode" class="border border-solid rounded-lg p-2 bg-white" type="text">
+              <app-button fit @click="getJournal">Tambah</app-button>
+            </div>
+          </div>
+          <app-button class="min-h-full" fit @click="() => showJournalCodeInput = !showJournalCodeInput">
+            <app-icon class="max-w-none" name="document-text"/>
+          </app-button>
+        </div>
         <input v-model="message"
                class="border border-solid rounded-lg p-4 w-full"
                placeholder="Ketik disini"
