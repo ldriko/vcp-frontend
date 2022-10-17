@@ -8,7 +8,8 @@ import './assets/tailwind.css'
 const pinia = createPinia()
 
 axios.defaults.withCredentials = true
-axios.defaults.baseURL = process.env.VUE_APP_API_BASE_URL
+// axios.defaults.baseURL = process.env.VUE_APP_API_BASE_URL
+axios.defaults.baseURL = 'https://api.jourid.aldrico.com/v1/'
 
 createApp(App)
   .use(pinia)
