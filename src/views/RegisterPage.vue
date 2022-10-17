@@ -58,7 +58,7 @@ const submit = async (values) => {
   <div class="flex p-5 px-20">
     <div class="font-quicksand font-medium w-8/12 ml-10 py-3">
       <tittle-name title="Yuk Daftar"/>
-      <div class="mb-5">Sebelum kamu masuk ke Belajar, daftarkan akunmu terlebih dahulu ya</div>
+      <div class="mb-5">Sebelum kamu masuk ke Jourid, daftarkan akunmu terlebih dahulu ya</div>
       <vee-form :validation-schema="schema" @submit="submit">
         <text-field label="Nama" name="name" placeholder="Masukkan nama lengkap anda"/>
         <text-field label="Alamat email" name="email" placeholder="Masukkan alamat email anda"/>

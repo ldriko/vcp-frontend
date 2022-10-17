@@ -63,6 +63,14 @@ const routes = [
         meta: {
           requiresAuth: true
         }
+      },
+      {
+        path: 'groups/:id/edit',
+        name: 'groups-edit',
+        component: () => import('@/views/Console/Groups/EditPage'),
+        meta: {
+          requiresAuth: true
+        }
       }
     ]
   },

@@ -20,7 +20,7 @@ const schema = Yup.object().shape({
 
 const isLoading = ref(false)
 
-const gotoRegister = () => router.push('/register')
+const gotoRegister = () => router.push({ name: 'register' })
 
 const submit = async (values) => {
   if (isLoading.value) return
@@ -35,7 +35,7 @@ const submit = async (values) => {
     sessionStore.setUser(data)
     sessionStore.setIsLoggedIn(true)
 
-    await router.push({ name: 'console' })
+    await router.push({ name: 'console-dashboard' })
   } catch (e) {
     console.log(e)
   }

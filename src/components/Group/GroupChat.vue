@@ -7,6 +7,7 @@ import { useSessionStore } from '@/stores/session'
 import GroupAction from '@/components/Group/GroupAction'
 
 const axios = inject('$axios')
+const baseUrl = axios.defaults.baseURL
 const sessionStore = useSessionStore()
 
 const emit = defineEmits(['close'])
@@ -54,6 +55,7 @@ const send = () => {
   axios.post(`/groups/${props.group.id}/chat`, {
     text: message.value
   }).then((response) => {
+    message.value = ''
     chat.value.push({ ...response.data, user: sessionStore.user })
     latestId.value = response.data.id
     clearTimeout(fetchRequest.value)
@@ -105,13 +107,16 @@ onUnmounted(() => {
   <div class="text-sm bg-gray-100 rounded-xl p-3 flex flex-col">
     <template v-if="props.group !== null">
       <div class="bg-gray-200 rounded-xl p-3 flex gap-4 items-center">
-        <app-avatar size="w-12 h-12"/>
+        <app-avatar v-if="props.group.picture_path"
+                    :src="`${baseUrl}/groups/${props.group.id}/picture`"
+                    size="w-12 h-12"/>
+        <app-avatar v-else size="w-12 h-12"/>
         <div class="flex-grow">
           <div class="text-md font-semibold">{{ props.group.title }}</div>
           <div v-if="membersCount !== null">{{ membersCount }} Anggota Tergabung</div>
         </div>
         <div>
-          <group-action @exit-group="exitGroup"/>
+          <group-action :group="props.group" @exit-group="exitGroup"/>
         </div>
       </div>
       <ul ref="chatRef" class="p-4 my-3 flex-grow overflow-y-auto">
@@ -125,7 +130,8 @@ onUnmounted(() => {
         <input v-model="message"
                class="border border-solid rounded-lg p-4 w-full"
                placeholder="Ketik disini"
-               type="text">
+               type="text"
+               @keydown.enter="send">
         <app-button @click="send">Kirim</app-button>
       </div>
     </template>
