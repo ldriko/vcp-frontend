@@ -5,7 +5,8 @@ import AppButton from "@/components/AppButton";
 
 <template>
   <console-title>Jurnal Saya</console-title>
-  <div class="flex justify-between">
+  <div class="font-quicksand">
+    <div class="flex justify-between">
     <p>Sebelum kamu Masuk ke Belajar pastikan daftar dahulu ya</p>
 
     <app-button color="primary"> Buat Jurnal </app-button>
@@ -98,4 +99,6 @@ import AppButton from "@/components/AppButton";
       </p>
     </div>
   </div>
+  </div>
+
 </template>
