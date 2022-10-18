@@ -6,10 +6,10 @@ import ConsoleTitle from "@/views/Console/ConsoleTitle";
 <template>
   <console-title>Temukan Jurnal</console-title>
 
-  <div class="grid grid-cols-2">
+  <div class="grid grid-cols-2 font-quicksand">
     <div>
       <!-- batas -->
-      <div class="border border-min-gray mt-9 rounded-xl flex p-1">
+      <div class="border border-min-gray mt-4 rounded-xl flex p-1">
         <input
           type="text"
           placeholder="Temukan Jurnal Terbaru disini "
