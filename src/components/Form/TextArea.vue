@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps, toRef } from 'vue'
+import { defineExpose, defineProps, ref, toRef } from 'vue'
 import { useField } from 'vee-validate'
 
 const props = defineProps({
@@ -25,6 +25,7 @@ const props = defineProps({
   }
 })
 
+const input = ref(null)
 const name = toRef(props, 'name')
 
 const {
@@ -36,12 +37,22 @@ const {
 } = useField(name, undefined, {
   initialValue: props.value
 })
+
+const changeValue = (value) => {
+  input.value.value = value
+  input.value.dispatchEvent(new Event('input'))
+}
+
+defineExpose({
+  changeValue
+})
 </script>
 
 <template>
   <div :class="{ 'has-error': !!errorMessage, success: meta.valid }" class="mb-5 flex flex-col">
     <label :for="name" class="font-semibold mb-1">{{ label }}</label>
     <textarea
+        ref="input"
         :id="name"
         :name="name"
         :placeholder="placeholder"

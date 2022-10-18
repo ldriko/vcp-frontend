@@ -1,26 +1,25 @@
 <script setup>
-import TittleName from "@/components/TittleName.vue";
-import TextField from "@/components/Form/TextField";
-import { Form as VeeForm } from "vee-validate";
-import AppButton from "@/components/AppButton";
-import * as Yup from "yup";
-import { inject, ref } from "vue";
+import TittleName from '@/components/TittleName.vue'
+import TextField from '@/components/Form/TextField'
+import { Form as VeeForm } from 'vee-validate'
+import AppButton from '@/components/AppButton'
+import * as Yup from 'yup'
+import { inject, ref } from 'vue'
 
-import router from "@/router";
+import router from '@/router'
 
-const axios = inject("$axios");
+const axios = inject('$axios')
 
 const schema = Yup.object().shape({
-  title: Yup.string().required("judul harus diisi"),
-  short_desc: Yup.string().required("penulis harus diisi"),
-});
+  title: Yup.string().required('judul harus diisi'),
+  short_desc: Yup.string().required('penulis harus diisi')
+})
 
 const isLoading = ref(false);
 
 const myFile = ref(null);
 
 const submit = async (values) => {
-  // console.log("tes");
   if (isLoading.value) return;
   const formData = new FormData();
   formData.append("title", values.title);
@@ -42,7 +41,7 @@ const submit = async (values) => {
 
 <template>
   <TittleName title="Tambahkan Jurnal Baru" />
-  <p>Sebelum kamu Masuk ke Belajar pastikan daftar dahulu ya</p>
+  <p>Sebelum kamu masuk ke Jourid pastikan daftar dahulu ya</p>
 
   <vee-form :validation-schema="schema" @submit="submit">
     <text-field

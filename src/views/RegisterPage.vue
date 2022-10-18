@@ -80,10 +80,8 @@ const submit = async (values) => {
       <!-- <img src="../assets/Girl L.png" class="mt-5" alt="" /> -->
     </div>
     <div class="font-quicksand font-medium w-8/12 ml-10 py-3">
-      <tittle-name title="Yuk Daftar" />
-      <div class="mb-5">
-        Sebelum kamu masuk ke Belajar, daftarkan akunmu terlebih dahulu ya
-      </div>
+      <tittle-name title="Yuk Daftar"/>
+      <div class="mb-5">Sebelum kamu masuk ke Jourid, daftarkan akunmu terlebih dahulu ya</div>
       <vee-form :validation-schema="schema" @submit="submit">
         <text-field
           label="Nama"

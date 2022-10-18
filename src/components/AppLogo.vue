@@ -13,6 +13,6 @@ const props = defineProps({
 <template>
   <div class="d-flex font-bold cursor-pointer" :class="{'text-white': props.white}">
     <app-icon :name="props.white ? 'award-white' : 'award'" width="40" height="40"/>
-    Belajar
+    Jourid
   </div>
 </template>
