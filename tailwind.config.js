@@ -13,7 +13,7 @@ module.exports = {
         100: "22rem",
         57 : "32rem",
         71 : "65rem",
-      
+        30 : "30rem",
         "console-sidebar": "296px"
       },
       fontFamily: {
@@ -24,7 +24,9 @@ module.exports = {
         'min-gray' : '#4E4E4E',
         'light-green' :  '#00D215',
         'soft-green' : '#D0ECD3',
-        'gray-green' : '#E6F5E8'
+        'gray-green' : '#E6F5E8',
+        'light-gray' : '#F8F8F8',
+        'almost-gray' : '#EEEEEE'
 
       },
       backgroundImage: {
