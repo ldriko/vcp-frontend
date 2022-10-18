@@ -28,7 +28,7 @@ export const useSessionStore = defineStore('session', () => {
   }
 
   const clear = () => {
-    isLoggedIn.value = true
+    isLoggedIn.value = false
     user.value = null
     localStorage.clear()
   }

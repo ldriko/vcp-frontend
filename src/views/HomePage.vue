@@ -11,22 +11,30 @@ import HomeFooter from '@/components/Home/HomeFooter.vue'</script>
       <span class="text-regal-green"> Education</span>
     </p>
     <p class="text-2xl text-center text-min-gray font-medium mt-9">
-      have you ever feel to hard move from schooll application <br />
+      have you ever feel to hard move from schooll application <br/>
       to anoher video conference ,
     </p>
-    <div class="border border-min-gray mt-9 rounded-xl flex p-1 mx-96">
-      <input
-        type="text"
-        placeholder="Temukan Jurnal Terbaru disini "
-        class="w-full"
-      />
-      <button class="bg-regal-green px-14 py-5 rounded-xl text-white">
+    <div class="border border-min-gray rounded-xl flex p-1">
+      <div class="flex-grow relative">
+        <input
+            v-model="search"
+            class="w-full min-h-full px-5 outline-none"
+            placeholder="Masukkan judul jurnal"
+            type="text"
+            @keydown.enter="searchJournals"
+        />
+        <app-icon class="absolute right-5 top-1/2 -translate-y-1/2 cursor-pointer"
+                  name="cross"
+                  width="15"
+                  @click="clearSearch"/>
+      </div>
+      <button class="bg-regal-green px-14 py-5 rounded-xl text-white" @click="searchJournals">
         Temukan
       </button>
     </div>
 
     <div class="">
-      <img src="../assets/diskusi.png" class="px-16 mt-24" alt="" />
+      <img src="../assets/diskusi.png" class="px-16 mt-24" alt=""/>
       <p class="text-center text-regal-green font-semibold mt-28 text-2xl">
         MENGAPA KAMI
       </p>
