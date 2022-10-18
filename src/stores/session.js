@@ -27,5 +27,11 @@ export const useSessionStore = defineStore('session', () => {
     localStorage.setItem('isLoggedIn', value)
   }
 
-  return { user, isLoggedIn, getUser, setUser, setIsLoggedIn }
+  const clear = () => {
+    isLoggedIn.value = true
+    user.value = null
+    localStorage.clear()
+  }
+
+  return { user, isLoggedIn, getUser, setUser, setIsLoggedIn, clear }
 })
