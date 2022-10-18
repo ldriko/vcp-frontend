@@ -104,5 +104,69 @@ const downloadJournal = ({ code }) => {
     <div v-else class="text-center mt-20">
       <app-icon class="w-1/2" name="journals-search"/>
     </div>
+
+      <!-- batas -->
+    </div>
+    <div class="pl-12">
+
+      <p class="font-bold text-xl">Filter Berdasarkan :</p>
+
+      <div class="border-b border-min-gray p-2"></div>
+
+      <div class="mt-2"></div>
+      <p class="font-bold text-xl">Tahun Penerbitan :</p>
+      <div class="mt-2">
+        <input type="checkbox" id="2022" name="2022" value="Bike" />
+        <label for="2022"> 2022</label><br />
+      </div>
+      <div class="mt-2">
+        <input type="checkbox" id="2021" name="2021" value="Bike" />
+        <label for="2021"> 2021</label><br />
+      </div>
+      <div class="mt-2">
+        <input type="checkbox" id="2020" name="2020" value="Bike" />
+        <label for="2020"> 2020</label><br />
+      </div>
+      <div class="mt-2">
+        <input type="checkbox" id="2019" name="2019" value="Bike" />
+        <label for="2019"> 2019</label><br />
+      </div>
+      <div class="mt-2">
+        <input type="checkbox" id="2018" name="2018" value="Bike" />
+        <label for="2018"> 2018</label><br />
+      </div>
+      <div class="mt-2">
+        <input type="checkbox" id="2017" name="2017" value="Bike" />
+        <label for="2017"> 2017</label><br />
+      </div>
+
+      <div class="border-b border-min-gray mt-4"></div>
+      <p class="font-bold text-xl">Kategori :</p>
+      <div class="mt-2">
+        <input type="checkbox" id="Pendidikan" name="Pendidikan" value="Bike" />
+        <label for="Pendidikan"> Pendidikan</label><br />
+      </div>
+      <div class="mt-2">
+        <input type="checkbox" id="Hukum dan Keamanan" name="Hukum dan Keamanan" value="Bike" />
+        <label for="Hukum dan Keamanan"> Hukum dan Keamanan</label><br />
+      </div>
+      <div class="mt-2">
+        <input type="checkbox" id="Ekonomi" name="Ekonomi" value="Bike" />
+        <label for="Ekonomi"> Ekonomi</label><br />
+      </div>
+      <div class="mt-2">
+        <input type="checkbox" id="Agama " name="Agama " value="Bike" />
+        <label for="Agama "> Agama </label><br />
+      </div>
+      <div class="mt-2">
+        <input type="checkbox" id="Sejarah dan Ilmu Sosial" name="Sejarah dan Ilmu Sosial" value="Bike" />
+        <label for="Sejarah dan Ilmu Sosial"> Sejarah dan Ilmu Sosial</label><br />
+      </div>
+      <div class="mt-2">
+        <input type="checkbox" id="Kesehatan" name="Kesehatan" value="Bike" />
+        <label for="Kesehatan"> Kesehatan</label><br />
+      </div>
+    </div>
+
   </div>
 </template>
