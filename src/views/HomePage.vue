@@ -25,7 +25,8 @@ const searchJournals = () => router.push({
     <div class="flex justify-center">
       <div class="max-w-3xl">
         <p class="text-center font-semibold lg:text-5xl sm:text-2xl sm:mt-16 lg:mt-32 leading-snug">
-          Belajar lebih mudah dan <span class="text-regal-green">menyenangkan</span> di
+          Belajar lebih <span class="text-regal-green">mudah</span> dan
+          <span class="text-regal-green">menyenangkan</span> di
           <span class="text-regal-green">Jourid</span>
         </p>
         <p class="lg:text-2xl sm:text-lg text-center text-min-gray font-medium mt-8 mb-8">
@@ -58,12 +59,12 @@ const searchJournals = () => router.push({
       >
         MENGAPA KAMI
       </p>
-      <div class="max-w-xl mx-auto">
+      <div class="max-w-3xl mx-auto">
         <div class="font-semibold lg:text-5xl sm:text-2xl text-center mt-5">
-          Poin-poin penting bagi kami
+          Apasih yang membuat Jourid beda dari yang lain?
         </div>
         <div class="lg:text-2xl sm:text-lg text-center text-min-gray font-medium mt-4 mb-14">
-          Kami memiliki beberapa alasan mengapa kamu harus mencoba produk kami dalam keseharianmu
+          Kami punya berbagai alasan mengapa kamu harus mulai mencoba Jourid
         </div>
       </div>
       <div class="flex sm:flex-col lg:flex-row text-black justify-center">
@@ -123,11 +124,11 @@ const searchJournals = () => router.push({
         <p class="text-regal-green font-bold text-lg" id="fitur_kami">FITUR KAMI</p>
 
         <p class="font-semibold lg:text-5xl sm:text-2xl mt-5">
-          Kemudahan memang pilihan 
+          Kemudahan memang pilihan
           kesepurnaan adalah keharusan
         </p>
         <p class="lg:text-xl sm:text-sm text-min-gray font-medium">
-          Kami mempunyai beberapa fitur yang anda dapatkan 
+          Kami mempunyai beberapa fitur yang anda dapatkan
           bila mana anda melakukan pendafatran pengguna
         </p>
 
@@ -185,8 +186,8 @@ const searchJournals = () => router.push({
         keharusan
       </p>
       <p class="font-semibold mt-5 lg:text-2xl sm:text-md text-min-gray">
-        Kamu dapat menggunakan fitur fitur ini dengan mengakses website kami , dan malakukan registrasi akun 
-maupun masuk kembali akun yang telah anda buat sebelumnya, semua akses pada kendali anda 
+        Kamu dapat menggunakan fitur fitur ini dengan mengakses website kami , dan malakukan registrasi akun
+maupun masuk kembali akun yang telah anda buat sebelumnya, semua akses pada kendali anda
       </p>
 
       <img src="../assets/display.png" class="mt-16" alt="">
