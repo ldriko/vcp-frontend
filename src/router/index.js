@@ -65,6 +65,14 @@ const routes = [
         }
       },
       {
+        path: 'journals/create',
+        name: 'journals-create',
+        component: () => import('@/views/Console/CreateJurnalPage'),
+        meta: {
+          requiresAuth: true
+        }
+      },
+      {
         path: 'groups',
         name: 'groups',
         component: () => import('@/views/Console/Groups/GroupsPage'),

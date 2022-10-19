@@ -14,9 +14,9 @@ const sessionStore = useSessionStore()
     <app-logo/>
     <home-navbar-menu>
       <home-navbar-menu-item>Beranda</home-navbar-menu-item>
-      <home-navbar-menu-item>Mengapa Kami</home-navbar-menu-item>
-      <home-navbar-menu-item>Fitur Kami</home-navbar-menu-item>
-      <home-navbar-menu-item>Cara Penggunaan</home-navbar-menu-item>
+      <home-navbar-menu-item> <a href="#mengapa_kami">Mengapa Kami</a></home-navbar-menu-item>
+      <home-navbar-menu-item> <a href="#fitur_kami">Fitur Kami</a> </home-navbar-menu-item>
+      <home-navbar-menu-item><a href="#cara_penggunaan">Cara Penggunaan</a> </home-navbar-menu-item>
     </home-navbar-menu>
     <div class="inline-flex gap-4 items-center">
       <template v-if="sessionStore.isLoggedIn">

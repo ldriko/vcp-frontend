@@ -9,7 +9,7 @@ import AppButton from "@/components/AppButton";
     <div class="flex justify-between">
     <p>Sebelum kamu Masuk ke Belajar pastikan daftar dahulu ya</p>
 
-    <app-button color="primary"> Buat Jurnal </app-button>
+    <app-button color="primary"><router-link to="create">Buat Jurnal</router-link>  </app-button>
   </div>
   <div class="flex">
     <p class="text-regal-green px-5 py-2 bg-soft-green rounded font-bold m-2">
