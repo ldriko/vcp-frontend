@@ -28,10 +28,27 @@ module.exports = {
         'gray-green' : '#E6F5E8',
         'light-gray' : '#F8F8F8',
         'almost-gray' : '#EEEEEE',
-        'litle-gray'  : '#CFCFCF'
+        'litle-gray'  : '#CFCFCF',
+        'gray' : '#808080'
       },
       backgroundImage: {
         'dekstop-display': "url('./src/assets/display.png')"
+      },
+      screens: {
+        'sm': '320px',
+        // => @media (min-width: 320px) { ... }
+  
+        'md': '768px',
+        // => @media (min-width: 768px) { ... }
+  
+        'lg': '1024px',
+        // => @media (min-width: 1024px) { ... }
+  
+        'xl': '1380px',
+        // => @media (min-width: 1280px) { ... }
+  
+        '2xl': '1536px',
+        // => @media (min-width: 1536px) { ... }
       }
     },
   },

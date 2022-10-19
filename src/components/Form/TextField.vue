@@ -34,7 +34,11 @@ const props = defineProps({
   disabled: {
     type: Boolean,
     default: false
-  }
+  },
+  inputClass: {
+    type: String,
+    default: null
+}
 })
 
 const input = ref(null)
