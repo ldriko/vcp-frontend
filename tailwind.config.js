@@ -27,8 +27,8 @@ module.exports = {
         'almost-green' : '#2AAB38',
         'gray-green' : '#E6F5E8',
         'light-gray' : '#F8F8F8',
-        'almost-gray' : '#EEEEEE'
-
+        'almost-gray' : '#EEEEEE',
+        'litle-gray'  : '#CFCFCF'
       },
       backgroundImage: {
         'dekstop-display': "url('./src/assets/display.png')"

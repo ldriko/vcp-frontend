@@ -42,9 +42,12 @@ import ConsoleTitle from "@/views/Console/ConsoleTitle";
       </div>
 
       <div>
-        <button class="bg-regal-green text-white m-2 rounded px-5 py-3">
-          view jurnal
-        </button>
+        <router-link to="detailJurnal">
+          <button  class="bg-regal-green text-white m-2 rounded px-5 py-3">
+           view jurnal
+          </button>
+        </router-link>
+       
         <button class="bg-regal-green text-white m-2 rounded px-5 py-3">
           Download
         </button>

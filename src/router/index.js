@@ -57,6 +57,14 @@ const routes = [
         }
       },
       {
+        path: 'detailJurnal',
+        name: 'console-detailJurnal',
+        component: () => import('@/views/Console/ConsoleDetailJurnalPage'),
+        meta: {
+          requiresAuth: true
+        }
+      },
+      {
         path: 'myJurnal',
         name: 'console-searchJurnal',
         component: () => import('@/views/Console/ConsoleSearchJurnalPage'),
