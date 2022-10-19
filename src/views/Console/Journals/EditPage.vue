@@ -63,7 +63,7 @@ const getJournal = async () => {
 const handleFileChange = () => file.value = fileInput.value.files[0]
 
 const submit = async (values) => {
-  if (!file.value || categories.value.length === 0 || !termAccepted.value) return
+  if (categories.value.length === 0 || !termAccepted.value) return
 
   const formData = new FormData()
 
@@ -75,7 +75,10 @@ const submit = async (values) => {
     formData.append('categories[]', category)
   }
 
-  formData.append('file', file.value)
+  if (file.value) {
+    formData.append('file', file.value)
+  }
+
   formData.append('_method', 'PUT')
 
   isLoading.value = true
