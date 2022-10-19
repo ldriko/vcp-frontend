@@ -57,8 +57,8 @@ const submit = async (values) => {
       </div>
       <img alt="" class="mt-auto" src="../assets/login-new.png"/>
     </div>
-    <div class="font-quicksand font-medium w-3/5 lg:ml-10 sm:ml-2 py-3">
-      <p class="text-2xl">Selamat Datang</p>
+    <div class="font-quicksand font-medium lg:w-3/5 sm:px-2 sm:w-full lg:ml-10  py-3">
+      <p class="text-2xl ">Selamat Datang</p>
       <div class="mb-5">Masukkan detil akunmu terlebih dahulu</div>
       <vee-form :validation-schema="schema" @submit="submit">
         <text-field
@@ -74,7 +74,7 @@ const submit = async (values) => {
             placeholder="Masukkan password yang ingin digunakan"
             type="password"
         />
-        <div class="mt-10 flex">
+        <div class="mt-10 flex lg:flex-row sm:flex-col">
           <app-button
               :is-disabled="isLoading"
               :is-loading="isLoading"
@@ -82,8 +82,9 @@ const submit = async (values) => {
               type="submit"
           >Masuk
           </app-button>
-          <span class="mx-5">atau</span>
+          <span class="mx-5 lg:block sm:hidden">atau</span>
           <app-button
+              class="sm:mt-2 lg:m-0"
               :is-disabled="isLoading"
               :is-loading="isLoading"
               color="secondary"

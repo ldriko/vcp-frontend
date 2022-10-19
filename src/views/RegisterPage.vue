@@ -56,7 +56,7 @@ const submit = async (values) => {
 
 <template>
   <div class="flex p-5 min-h-screen">
-    <div class="bg-regal-green w-2/5 rounded-md flex flex-col">
+    <div class="bg-regal-green w-2/5 rounded-md flex flex-col lg:block sm:hidden">
       <div class="flex flex-col gap-6 p-9 flex-shrink-0">
         <app-logo white/>
         <p class="text-white font-bold text-3xl leading-10">
@@ -75,7 +75,7 @@ const submit = async (values) => {
         <img alt="" class="h-78" src="../assets/Girl-L.png"/>
       </div>
     </div>
-    <div class="font-quicksand font-medium w-3/5 ml-10 py-3">
+    <div class="font-quicksand font-medium lg:w-3/5 sm:w-full lg:ml-10 sm:m-0 py-3">
       <tittle-name title="Yuk Daftar"/>
       <div class="mb-5">Sebelum kamu masuk ke Jourid, daftarkan akunmu terlebih dahulu ya</div>
       <vee-form :validation-schema="schema" @submit="submit">
@@ -101,7 +101,7 @@ const submit = async (values) => {
             placeholder="Masukkan ulang password"
             type="password"
         />
-        <div class="mt-10">
+        <div class="mt-10 flex sm:flex-col">
           <app-button
               :is-disabled="isLoading"
               :is-loading="isLoading"
@@ -109,8 +109,9 @@ const submit = async (values) => {
               type="submit"
           >Buat Akun
           </app-button>
-          <span class="mx-5">atau</span>
+          <span class="mx-5 lg:block sm:hidden">atau</span>
           <app-button
+              class="sm:mt-2 lg:m-0"
               :is-disabled="isLoading"
               :is-loading="isLoading"
               color="secondary"

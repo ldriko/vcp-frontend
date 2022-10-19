@@ -22,6 +22,7 @@ const sessionStore = useSessionStore();
     class="flex px-10 lg:px-16 py-10 items-center justify-between font-semibold"
   >
     <app-logo />
+   
     <home-navbar-menu v-if="!hideMenu">
       <home-navbar-menu-item>Beranda</home-navbar-menu-item>
       <home-navbar-menu-item>
