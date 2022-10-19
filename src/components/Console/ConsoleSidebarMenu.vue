@@ -10,8 +10,8 @@ const props = defineProps({
 </script>
 
 <template>
-  <h1 v-if="props.title !== null" class="text-white text-opacity-50 mx-3 mb-8 uppercase">{{ props.title }}</h1>
-  <ul class="space-y-2">
+  <h1 v-if="props.title !== null" class="text-white text-opacity-50 mx-3 mb-3 uppercase">{{ props.title }}</h1>
+  <ul class="space-y-2 mb-10">
     <slot/>
   </ul>
 </template>
