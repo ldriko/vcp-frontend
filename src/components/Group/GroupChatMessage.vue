@@ -49,7 +49,7 @@ const downloadJournalPdf = () => {
       </div>
       <div v-if="props.journal !== null" class="bg-white p-4 rounded-xl mb-3 relative">
         <div class="font-bold text-regal-green">{{ props.journal.title }}</div>
-        <div class="font-semibold">Author: {{ props.journal.user.name }}</div>
+        <div class="font-semibold">Author: {{ props.journal.author_name }}</div>
         <div class="leading-6 h-6 text-ellipsis whitespace-nowrap w-full overflow-hidden">
           {{ props.journal.short_desc }}
         </div>
