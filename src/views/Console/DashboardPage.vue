@@ -4,9 +4,11 @@ import ConsoleTitle from '@/views/Console/ConsoleTitle'
 import ConsoleSubtitle from '@/views/Console/ConsoleSubtitle'
 import AppAvatar from '@/components/AppAvatar'
 import AppIcon from '@/components/AppIcon'
+import { useRouter } from 'vue-router'
 
 const axios = inject('$axios')
 const axiosBaseURL = axios.defaults.baseURL
+const router = useRouter()
 
 const groups = ref([])
 const journals = ref([])
@@ -26,8 +28,8 @@ const fetchJournals = async () => {
 }
 
 const downloadJournal = (code) => window.open(`${axiosBaseURL}/journals/${code}/pdf?is_download=1`)
-const editJournal = (code) => console.log('Go to edit journal ' + code)
-const openJournal = (code) => console.log('Open journal ' + code)
+const editJournal = (code) => router.push({ name: 'journals-edit', params: { code } })
+const openJournal = (code) => router.push({ name: 'journals-show', params: { code } })
 
 onMounted(() => {
   fetchGroups()
@@ -87,7 +89,7 @@ onMounted(() => {
     <div class="flex justify-between align-items mb-3">
       <p class="text-regal-green text-xl font-bold">Jurnal Anda</p>
       <p class="text-regal-green underline underline-offset-4 font-bold cursor-pointer"
-         @click="() => $router.push({ name:'journals' })">
+         @click="() => $router.push({ name:'journals-manage' })">
         Selengkapnya
       </p>
     </div>

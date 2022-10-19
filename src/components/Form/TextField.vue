@@ -55,6 +55,10 @@ const changeValue = (value) => {
   input.value.dispatchEvent(new Event('input'))
 }
 
+const handleClick = (e) => {
+  if (props.type === 'date') e.target.showPicker()
+}
+
 defineExpose({
   changeValue
 })
@@ -75,6 +79,7 @@ defineExpose({
           :value="inputValue"
           class="border-solid border 12 rounded-lg py-2 px-3"
           @blur="handleBlur"
+          @click="handleClick"
           @input="handleChange"
       />
     </div>

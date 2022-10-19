@@ -33,7 +33,7 @@ const buttonColors = {
 }
 
 const classes = buttonColors[(props.isLoading || props.isDisabled) ? 'disabled' : props.color]
-    + (props.fit ? ' p-2.5' : ' w-32 py-2.5')
+    + (props.fit ? ' p-2.5' : ' px-8 py-2.5')
 
 const click = () => {
   if (!props.isDisabled) {

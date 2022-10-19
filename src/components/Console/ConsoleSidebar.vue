@@ -30,9 +30,7 @@ const logout = () => {
       <console-sidebar-menu-item icon="document-text" to="journals-manage">Jurnal Saya</console-sidebar-menu-item>
       <console-sidebar-menu-item icon="people" to="groups">Grup Saya</console-sidebar-menu-item>
     </console-sidebar-menu>
-
     <console-sidebar-menu title="Lainnya">
-      <console-sidebar-menu-item icon="profile-circle-white">Akun Saya</console-sidebar-menu-item>
       <console-sidebar-menu-item icon="logout-white" @click="logout">Keluar Akun</console-sidebar-menu-item>
     </console-sidebar-menu>
   </nav>
