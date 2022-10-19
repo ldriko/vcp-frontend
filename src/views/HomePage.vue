@@ -25,7 +25,8 @@ const searchJournals = () => router.push({
     <div class="flex justify-center">
       <div class="max-w-3xl">
         <p class="text-center font-semibold text-5xl mt-32 leading-snug">
-          Belajar lebih mudah dan <span class="text-regal-green">menyenangkan</span> di
+          Belajar lebih <span class="text-regal-green">mudah</span> dan
+          <span class="text-regal-green">menyenangkan</span> di
           <span class="text-regal-green">Jourid</span>
         </p>
         <p class="text-2xl text-center text-min-gray font-medium mt-8 mb-8">
@@ -58,12 +59,12 @@ const searchJournals = () => router.push({
       >
         MENGAPA KAMI
       </p>
-      <div class="max-w-xl mx-auto">
+      <div class="max-w-3xl mx-auto">
         <div class="font-semibold text-5xl text-center mt-5">
-          Poin-poin penting bagi kami
+          Apasih yang membuat Jourid beda dari yang lain?
         </div>
         <div class="text-2xl text-center text-min-gray font-medium mt-4 mb-14">
-          Kami memiliki beberapa alasan mengapa kamu harus mencoba produk kami dalam keseharianmu
+          Kami punya berbagai alasan mengapa kamu harus mulai mencoba Jourid
         </div>
       </div>
       <div class="flex text-white justify-center">
