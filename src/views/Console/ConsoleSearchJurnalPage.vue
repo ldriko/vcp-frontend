@@ -6,6 +6,7 @@ import ConsoleSubtitle from '@/views/Console/ConsoleSubtitle'
 import { useRoute, useRouter } from 'vue-router'
 import HomeNavbar from '@/components/Home/HomeNavbar'
 import { useSessionStore } from '@/stores/session'
+import ShareJournalButton from '@/components/Journal/ShareJournalButton'
 
 const axios = inject('$axios')
 const axiosBaseURL = axios.defaults.baseURL
@@ -54,10 +55,18 @@ const showJournal = ({ code }) => {
   }
 }
 
+const userGroups = ref([])
+
+const fetchGroups = async () => {
+  const response = await axios.get('/groups').catch(() => null)
+  userGroups.value = response?.data ?? []
+}
+
 const downloadJournal = ({ code }) => window.open(`${axiosBaseURL}/journals/${code}/pdf?is_download=1`)
 
 onMounted(() => {
   fetchCategories()
+  fetchGroups()
   if (search.value !== null) searchJournals()
 })
 
@@ -108,16 +117,17 @@ const type = route.params.type
             </div>
             <div class="flex gap-4">
               <button :class="{'bg-gray-100 text-black': !sessionStore.isLoggedIn, 'bg-regal-green text-white': sessionStore.isLoggedIn}"
-                      class="text-sm rounded px-6 py-2 items-center flex gap-2 active:scale-95 transition"
+                      class="text-sm rounded px-4 py-2 items-center flex gap-2 active:scale-95 transition"
                       @click="() => showJournal(journal)">
                 <app-icon :name="sessionStore.isLoggedIn ? 'document-text' : 'document-text-black'" width="20"/>
                 Buka {{ !sessionStore.isLoggedIn ? ' : Masuk terlebih dahulu' : '' }}
               </button>
-              <button class="bg-regal-green text-white text-sm rounded px-6 py-2 items-center flex gap-2 active:scale-95 transition"
+              <button class="bg-regal-green text-white text-sm rounded px-4 py-2 items-center flex gap-2 active:scale-95 transition"
                       @click="() => downloadJournal(journal)">
                 <app-icon name="document-download-white" width="20"/>
                 Unduh
               </button>
+              <share-journal-button :groups="userGroups" :journal="journal" class="ml-auto"/>
             </div>
           </div>
         </template>
