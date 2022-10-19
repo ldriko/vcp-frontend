@@ -96,10 +96,11 @@ onMounted(() => {
     <ul class="space-y-4">
       <li v-for="journal in journals" :key="journal.id" class="bg-white rounded-xl w-full p-4 flex">
         <div class="flex-grow">
-          <div class="flex gap-4 mb-4">
-            <p v-for="category in journal.categories"
-               :key="category.id"
-               class="text-regal-green px-5 py-2 bg-gray-green rounded font-bold">{{ category.name }}</p>
+          <div class="flex gap-4 mb-4 flex-wrap">
+            <div v-for="category in journal.categories"
+                 :key="category.id"
+                 class="text-regal-green px-5 py-2 bg-gray-green rounded font-bold">{{ category.name }}
+            </div>
           </div>
           <div>
             <p class="text-2xl font-semibold mb-2">{{ journal.title }}</p>

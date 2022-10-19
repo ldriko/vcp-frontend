@@ -61,6 +61,7 @@ const send = () => {
     clearJournal()
     chat.value.push({ ...response.data, user: sessionStore.user })
     latestId.value = response.data.id
+    setTimeout(() => chatRef.value.scrollTo(0, chatRef.value.scrollHeight), 100)
     clearTimeout(fetchRequest.value)
     fetchRequest.value = null
     fetchChat()
