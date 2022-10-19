@@ -44,21 +44,27 @@ onMounted(getJournal)
     <div class="text-2xl font-semibold mb-6">{{ journal.title }}</div>
     <div class="flex gap-8 mb-4">
       <div class="flex items-center gap-2">
-        <div class="bg-regal-green rounded-lg w-6 h-6"/>
+        <div class="bg-regal-green rounded-lg p-2 flex">
+          <app-icon height="20" name="document" width="20"/>
+        </div>
         <div>
           <div class="text-sm font-medium text-gray-500">Tanggal Upload</div>
           <div class="font-semibold">{{ dayjs(journal.created_at).format('DD/MM/YYYY') }}</div>
         </div>
       </div>
       <div class="flex items-center gap-2">
-        <div class="bg-regal-green rounded-lg w-6 h-6"/>
+        <div class="bg-regal-green rounded-lg p-2 flex">
+          <app-icon height="20" name="profile" width="20"/>
+        </div>
         <div>
           <div class="text-sm font-medium text-gray-500">Penulis Jurnal</div>
           <div class="font-semibold">{{ journal.author_name }}</div>
         </div>
       </div>
       <div class="flex items-center gap-2">
-        <div class="bg-regal-green rounded-lg w-6 h-6"/>
+        <div class="bg-regal-green rounded-lg p-2 flex">
+          <app-icon height="20" name="calendar" width="20"/>
+        </div>
         <div>
           <div class="text-sm font-medium text-gray-500">Tahun Penerbitan</div>
           <div class="font-semibold">{{ dayjs(journal.published_at).format('YYYY') }}</div>
