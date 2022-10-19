@@ -26,9 +26,6 @@ const logout = () => {
     <img class="absolute top-0 -left-5" src="./../../assets/polaa.png" alt="">
     <img class="absolute top-64 left-60" src="./../../assets/polaa.png" alt="">
     <img class="absolute top-0 left-60" src="./../../assets/polaa.png" alt="">
-
-   
-
     <app-logo class="mb-10 mx-2" white/>
     <console-sidebar-menu title="Menu">
       <console-sidebar-menu-item icon="home" to="console-dashboard">Beranda</console-sidebar-menu-item>
@@ -38,10 +35,7 @@ const logout = () => {
     </console-sidebar-menu>
     <img class="absolute top-18 left-16 " src="./../../assets/polaa.png" alt="">
     <console-sidebar-menu title="Lainnya">
-      <console-sidebar-menu-item icon="profile-circle-white">Akun Saya</console-sidebar-menu-item>
       <console-sidebar-menu-item icon="logout-white" @click="logout">Keluar Akun</console-sidebar-menu-item>
     </console-sidebar-menu>
-
-    
   </nav>
 </template>

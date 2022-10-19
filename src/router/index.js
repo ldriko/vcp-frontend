@@ -57,6 +57,30 @@ const routes = [
         }
       },
       {
+        path: 'journals/create',
+        name: 'journals-create',
+        component: () => import('@/views/Console/Journals/CreatePage'),
+        meta: {
+          requiresAuth: true
+        }
+      },
+      {
+        path: 'journals/:code',
+        name: 'journals-show',
+        component: () => import('@/views/Console/Journals/ShowPage'),
+        meta: {
+          requiresAuth: true
+        }
+      },
+      {
+        path: 'journals/:code/edit',
+        name: 'journals-edit',
+        component: () => import('@/views/Console/Journals/EditPage'),
+        meta: {
+          requiresAuth: true
+        }
+      },
+      {
         path: 'journals/search',
         name: 'journals-search',
         component: () => import('@/views/Console/ConsoleSearchJurnalPage'),
@@ -97,6 +121,11 @@ const routes = [
         }
       }
     ]
+  },
+  {
+    path: '/journals/search/:type',
+    name: 'journals-search-guest',
+    component: () => import('@/views/Console/ConsoleSearchJurnalPage')
   },
   {
     path: '/jurnal',

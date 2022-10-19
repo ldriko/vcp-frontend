@@ -4,6 +4,7 @@ import router from './router'
 import axios from 'axios'
 import App from './App.vue'
 import './assets/tailwind.css'
+import dayjs from 'dayjs'
 
 const pinia = createPinia()
 
@@ -15,4 +16,5 @@ createApp(App)
   .use(pinia)
   .use(router)
   .provide('$axios', axios)
+  .provide('$dayjs', dayjs)
   .mount('#app')
