@@ -75,10 +75,13 @@ const type = route.params.type
 
 <template>
   <home-navbar v-if="type === 'guest'" hide-menu/>
-  <div :class="{'px-16 pb-10': type === 'guest'}">
-    <console-title class="mb-2">Temukan Jurnal</console-title>
-    <console-subtitle>Cari jurnal yang kamu inginkan dengan mengisi pencarian berikut</console-subtitle>
-    <div class="flex gap-10 mt-8">
+  <div :class="{'lg:px-16 sm:px-4 pb-10': type === 'guest'}">
+    <div class="lg:mx-0 sm:mx-4 mt-2">
+      <console-title class="mb-2">Temukan Jurnal</console-title>
+      <console-subtitle>Cari jurnal yang kamu inginkan dengan mengisi pencarian berikut</console-subtitle>
+    </div>
+   
+    <div class="lg:flex flex-row gap-10 mt-8 mx-4">
       <div class="flex-grow">
         <div class="border border-min-gray rounded-xl flex p-1">
           <div class="flex-grow relative">
@@ -94,7 +97,7 @@ const type = route.params.type
                       width="15"
                       @click="clearSearch"/>
           </div>
-          <button class="bg-regal-green px-14 py-5 rounded-xl text-white" @click="searchJournals">
+          <button class="bg-regal-green lg:px-14 sm:px-2 py-5 rounded-xl text-white" @click="searchJournals">
             Temukan
           </button>
         </div>
@@ -135,7 +138,7 @@ const type = route.params.type
           <app-icon class="w-1/2" name="journals-search"/>
         </div>
       </div>
-      <div class="w-console-sidebar flex-shrink-0">
+      <div class="w-console-sidebar flex-shrink-0 lg:m-0 sm:m-2">
         <p class="font-bold text-xl">Filter Berdasarkan :</p>
         <div class="border-b border-min-gray my-4"></div>
         <p class="font-bold text-xl mb-4">Tahun Penerbitan :</p>

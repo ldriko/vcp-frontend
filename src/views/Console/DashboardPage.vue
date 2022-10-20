@@ -38,8 +38,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="grid grid-cols-6">
-    <div class="col-span-3">
+  <div class="grid lg:grid-cols-6 grid-cols-12">
+    <div class="lg:col-span-3 sm:col-span-12 lg:m-0 sm:m-2">
       <console-title>Selamat Datang</console-title>
       <console-subtitle>Kamu bisa mengakses beberapa hal dari halaman ini</console-subtitle>
       <div class="flex justify-between items-center">
@@ -69,7 +69,7 @@ onMounted(() => {
         </li>
       </ul>
     </div>
-    <div class="col-span-3 col-start-5 mt-20">
+    <div class="lg:col-span-3 sm:col-span-12 lg:col-start-5 lg:m-0 sm:m-2  mt-20">
       <div class="bg-regal-green text-white rounded-tl-3xl rounded-tr-lg rounded-br-3xl rounded-bl-lg shadow-xl shadow-soft-green overflow-hidden">
         <div class="p-6">
           <p class="bg-almost-green w-max p-1 rounded-md">Ilmu sosial</p>

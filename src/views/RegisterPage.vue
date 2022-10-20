@@ -101,7 +101,7 @@ const submit = async (values) => {
             placeholder="Masukkan ulang password"
             type="password"
         />
-        <div class="mt-10 flex sm:flex-col">
+        <div class="mt-10 flex lg:flex-row sm:flex-col">
           <app-button
               :is-disabled="isLoading"
               :is-loading="isLoading"

@@ -4,6 +4,7 @@ import AppButton from '@/components/AppButton'
 import ConsoleSubtitle from '@/views/Console/ConsoleSubtitle'
 import { inject, onMounted, ref, watch } from 'vue'
 import AppIcon from '@/components/AppIcon'
+
 import { useRouter } from 'vue-router'
 
 const axios = inject('$axios')
@@ -65,8 +66,11 @@ onMounted(() => {
 </script>
 
 <template>
-  <console-title>Jurnal Saya</console-title>
-  <console-subtitle>List jurnal yang telah kamu buat dan sebarkan</console-subtitle>
+  <div class="mt-4 mx-2">
+    <console-title>Jurnal Saya</console-title>
+    <console-subtitle>List jurnal yang telah kamu buat dan sebarkan</console-subtitle>
+  </div>
+  
   <div class="flex gap-4">
     <div class="flex-grow flex overflow-x-auto gap-2 pb-2">
       <div v-for="category in categories"
@@ -125,7 +129,7 @@ onMounted(() => {
       </div>
     </div>
   </div>
-  <div class="flex gap-4 justify-center items-center mt-4">
+  <div class="flex gap-4 mx-2 justify-center items-center mt-4">
     <app-button @click="() => setPage(-1)">Sebelumnya</app-button>
     <div class="font-semibold">{{ page }} / {{ Math.ceil(count / limit) }}</div>
     <app-button @click="() => setPage(1)">Sesudahnya</app-button>
