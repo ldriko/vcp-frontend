@@ -1,5 +1,5 @@
 <script setup>
-import { defineEmits, defineProps } from 'vue'
+import { defineEmits, defineProps, ref, watch } from 'vue'
 
 const props = defineProps({
   type: {
@@ -32,14 +32,19 @@ const buttonColors = {
   white: 'bg-white text-black border border-solid'
 }
 
-const classes = buttonColors[(props.isLoading || props.isDisabled) ? 'disabled' : props.color]
-    + (props.fit ? ' p-2.5' : ' px-8 py-2.5')
+const classes = ref(buttonColors[(props.isLoading || props.isDisabled) ? 'disabled' : props.color]
+    + (props.fit ? ' p-2.5' : ' px-8 py-2.5'))
 
 const click = () => {
   if (!props.isDisabled) {
     emit('click')
   }
 }
+
+watch(props, () => {
+  classes.value = buttonColors[(props.isLoading || props.isDisabled) ? 'disabled' : props.color]
+      + (props.fit ? ' p-2.5' : ' px-8 py-2.5')
+}, { deep: true })
 </script>
 
 <template>
