@@ -44,8 +44,8 @@ const click = () => {
 
 <template>
   <button :class="classes"
-          class="text-sm font-semibold rounded-lg active:scale-95 transition"
           :type="type"
+          class="text-sm font-semibold rounded-lg active:scale-95 transition"
           @click="click">
     <slot/>
   </button>

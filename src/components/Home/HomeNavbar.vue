@@ -1,25 +1,25 @@
 <script setup>
-import { defineProps } from "vue";
-import { useSessionStore } from "@/stores/session";
-import AppLogo from "@/components/AppLogo";
-import HomeNavbarMenu from "@/components/Home/HomeNavbarMenu";
-import HomeNavbarMenuItem from "@/components/Home/HomeNavbarMenuItem";
-import AppButton from "@/components/AppButton";
-import AppAvatar from "@/components/AppAvatar";
+import { defineProps } from 'vue'
+import { useSessionStore } from '@/stores/session'
+import AppLogo from '@/components/AppLogo'
+import HomeNavbarMenu from '@/components/Home/HomeNavbarMenu'
+import HomeNavbarMenuItem from '@/components/Home/HomeNavbarMenuItem'
+import AppButton from '@/components/AppButton'
+import AppAvatar from '@/components/AppAvatar'
 
 const props = defineProps({
   hideMenu: {
     type: Boolean,
-    default: false,
-  },
-});
+    default: false
+  }
+})
 
-const sessionStore = useSessionStore();
+const sessionStore = useSessionStore()
 </script>
 
 <template>
   <div
-    class="flex px-10 lg:px-16 py-10 items-center justify-between font-semibold"
+      class="flex px-10 lg:px-16 py-10 items-center justify-between font-semibold sticky top-0 bg-white"
   >
     <app-logo />
    

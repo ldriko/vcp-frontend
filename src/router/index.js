@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { useSessionStore } from '@/stores/session'
+import { useAlertStore } from '@/stores/alert'
 
 const routes = [
   {
@@ -133,6 +134,9 @@ const router = createRouter({
 
 router.beforeResolve((to) => {
   const sessionStore = useSessionStore()
+  const alertStore = useAlertStore()
+
+  alertStore.close()
 
   if (to.meta.requiresAuth && !sessionStore.isLoggedIn) return '/'
 })
