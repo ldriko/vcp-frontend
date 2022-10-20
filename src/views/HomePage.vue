@@ -52,7 +52,7 @@ const searchJournals = () => router.push({
     </div>
 
     <div class="mx-auto">
-      <img src="../assets/diskusi.png" class="lg:px-16 sm:px-6 lg:mt-24 sm:mt-4" alt=""/>
+      <img src="../assets/diskusi.png" class="lg:px-16 sm:px-6 lg:mt-24 sm:mt-4 mx-auto" alt=""/>
       <p
           id="mengapa_kami"
           class="text-center text-regal-green font-semibold lg:mt-28 sm:mt-14 lg:text-2xl sm:text-xl"
