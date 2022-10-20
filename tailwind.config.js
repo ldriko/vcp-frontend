@@ -29,7 +29,7 @@ module.exports = {
         'light-gray' : '#F8F8F8',
         'almost-gray' : '#EEEEEE',
         'litle-gray'  : '#CFCFCF',
-        'gray' : '#808080'
+        // 'gray' : '#808080'
       },
       backgroundImage: {
         'dekstop-display': "url('./src/assets/display.png')"

@@ -119,17 +119,20 @@ const type = route.params.type
               <p class="text-sm mt-1">{{ journal.short_desc }}</p>
             </div>
             <div class="flex gap-4">
-              <button :class="{'bg-gray-100 text-black': !sessionStore.isLoggedIn, 'bg-regal-green text-white': sessionStore.isLoggedIn}"
-                      class="text-sm rounded px-4 py-2 items-center flex gap-2 active:scale-95 transition"
+              <div class="lg:flex sm:grid">
+                <button :class="{'bg-gray-100 text-black': !sessionStore.isLoggedIn, 'bg-regal-green text-white': sessionStore.isLoggedIn}"
+                      class="text-sm rounded px-4 m-1 py-2 items-center flex gap-2 active:scale-95 transition"
                       @click="() => showJournal(journal)">
                 <app-icon :name="sessionStore.isLoggedIn ? 'document-text' : 'document-text-black'" width="20"/>
                 Buka {{ !sessionStore.isLoggedIn ? ' : Masuk terlebih dahulu' : '' }}
               </button>
-              <button class="bg-regal-green text-white text-sm rounded px-4 py-2 items-center flex gap-2 active:scale-95 transition"
+              <button class="bg-regal-green text-white m-1 text-sm rounded px-4 py-2 items-center flex gap-2 active:scale-95 transition"
                       @click="() => downloadJournal(journal)">
                 <app-icon name="document-download-white" width="20"/>
                 Unduh
               </button>
+              </div>
+             
               <share-journal-button :groups="userGroups" :journal="journal" class="ml-auto"/>
             </div>
           </div>

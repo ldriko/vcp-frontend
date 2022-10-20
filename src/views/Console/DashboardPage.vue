@@ -94,7 +94,7 @@ onMounted(() => {
       </p>
     </div>
     <ul class="space-y-4">
-      <li v-for="journal in journals" :key="journal.id" class="bg-white rounded-xl w-full p-4 flex">
+      <li v-for="journal in journals" :key="journal.id" class="bg-white rounded-xl w-full p-4 lg:flex sm:block">
         <div class="flex-grow">
           <div class="flex gap-4 mb-4 flex-wrap">
             <div v-for="category in journal.categories"
@@ -103,7 +103,7 @@ onMounted(() => {
             </div>
           </div>
           <div>
-            <p class="text-2xl font-semibold mb-2">{{ journal.title }}</p>
+            <p class="lg:text-2xl sm:text-xl font-semibold mb-2">{{ journal.title }}</p>
             <p class="text-sm">{{ journal.short_desc }}</p>
           </div>
         </div>
