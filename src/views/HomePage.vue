@@ -69,7 +69,7 @@ const searchJournals = () => router.push({
       </div>
       <div class="flex sm:flex-col lg:flex-row text-black justify-center">
         <div class="w-80 h-60  hover:bg-regal-green hover:text-white sm:mx-auto lg:m-2  mt-5 rounded-lg p-3">
-          <img src="../assets/people.png" alt="" />
+          <img src="./../../public/icons/people.svg"  alt="" />
           <p class="mt-2 font-bold">Mudah dalam penggunaan</p>
           <p class="mt-3">
             Kami mempunyai tampilan yang mudah sehingga mulai kaum millenial

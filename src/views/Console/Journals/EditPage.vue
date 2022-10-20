@@ -95,7 +95,8 @@ onMounted(getJournal)
 </script>
 
 <template>
-  <console-back-button/>
+  <div class="mx-2">
+    <console-back-button/>
   <console-title>Edit Jurnal</console-title>
   <console-subtitle>Ada yang salah dengan jurnalmu?</console-subtitle>
   <vee-form :validation-schema="schema" @submit="submit">
@@ -148,7 +149,9 @@ onMounted(getJournal)
       </div>
     </div>
     <div class="flex justify-end">
-      <app-button type="submit">Simpan</app-button>
+      <app-button type="submit" class="sm:w-full lg:w-1/5 mt-1">Simpan</app-button>
     </div>
   </vee-form>
+  </div>
+  
 </template>
