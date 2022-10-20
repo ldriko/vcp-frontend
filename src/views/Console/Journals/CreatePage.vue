@@ -66,7 +66,8 @@ const submit = async (values) => {
 </script>
 
 <template>
-  <console-back-button/>
+  <div class="mx-2">
+    <console-back-button/>
   <console-title>Tambahkan Jurnal Baru</console-title>
   <console-subtitle>Yuk, buat jurnal kamu sendiri. Mari berbagi pengetahuanmu dengan orang lain</console-subtitle>
   <vee-form :validation-schema="schema" @submit="submit">
@@ -108,8 +109,10 @@ const submit = async (values) => {
         karya yang saya upload <span class="text-regal-green font-medium">bukan milik orang lain</span>
       </div>
     </div>
-    <div class="flex justify-end">
-      <app-button type="submit">Buat</app-button>
+    <div class="flex justify-end ">
+      <app-button type="submit" class=" sm:w-full lg:w-1/5 mt-2">Buat</app-button>
     </div>
   </vee-form>
+  </div>
+  
 </template>

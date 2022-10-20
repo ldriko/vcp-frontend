@@ -48,6 +48,7 @@ const fetchJournals = async () => {
       categories: selectedCategories.value
     }
   }).catch(() => null)
+  console.log(response)
   journals.value = response?.data.result ?? []
   count.value = response?.data.count ?? 0
 }

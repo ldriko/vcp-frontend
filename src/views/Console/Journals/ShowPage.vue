@@ -34,7 +34,8 @@ onMounted(getJournal)
     <console-back-button class="absolute left-0 top-0"/>
   </div>
   <template v-if="journal">
-    <div class="flex gap-4 mb-6">
+    <div class="sm:mx-2 lg:m-0">
+      <div class="flex gap-4 mb-6">
       <div v-for="category in journal.categories"
            :key="category.id"
            class="px-3 py-2 bg-soft-green rounded-lg text-regal-green font-semibold">
@@ -42,8 +43,8 @@ onMounted(getJournal)
       </div>
     </div>
     <div class="text-2xl font-semibold mb-6">{{ journal.title }}</div>
-    <div class="flex gap-8 mb-4">
-      <div class="flex items-center gap-2">
+    <div class="lg:flex sm:block gap-8 mb-4">
+      <div class="flex items-center mt-2 gap-2">
         <div class="bg-regal-green rounded-lg p-2 flex">
           <app-icon height="20" name="document" width="20"/>
         </div>
@@ -52,7 +53,7 @@ onMounted(getJournal)
           <div class="font-semibold">{{ dayjs(journal.created_at).format('DD/MM/YYYY') }}</div>
         </div>
       </div>
-      <div class="flex items-center gap-2">
+      <div class="flex items-center mt-2 gap-2">
         <div class="bg-regal-green rounded-lg p-2 flex">
           <app-icon height="20" name="profile" width="20"/>
         </div>
@@ -61,7 +62,7 @@ onMounted(getJournal)
           <div class="font-semibold">{{ journal.author_name }}</div>
         </div>
       </div>
-      <div class="flex items-center gap-2">
+      <div class="flex items-center mt-2 gap-2">
         <div class="bg-regal-green rounded-lg p-2 flex">
           <app-icon height="20" name="calendar" width="20"/>
         </div>
@@ -73,15 +74,17 @@ onMounted(getJournal)
     </div>
     <div class="text-lg font-semibold">Detail Jurnal:</div>
     <p class="text-gray-500 mb-8">{{ journal.short_desc }}</p>
-    <div class="flex gap-4">
-      <app-button class="px-5" @click="showPdf">
+    <div class="lg:flex lg:gap-4 sm:gap-2">
+      <app-button class="px-5 mx-1" @click="showPdf">
         <app-icon name="document-text"/>
         Buka Jurnal
       </app-button>
-      <app-button class="px-5" @click="downloadPdf">
+      <app-button class="px-5 mx-1" @click="downloadPdf">
         <app-icon name="document-download-white"/>
         Unduh Jurnal
       </app-button>
     </div>
+    </div>
+   
   </template>
 </template>

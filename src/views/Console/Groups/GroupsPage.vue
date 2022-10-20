@@ -66,6 +66,6 @@ const joinGroup = async () => {
                   @change="(group) => selectGroup(group)"
                   @show-join-group="showJoinGroup"/>
     </div>
-    <group-chat :group="selectedGroup" class="w-1/2" @close="() => selectGroup(null)"/>
+    <group-chat :group="selectedGroup" class="lg:w-1/2 sm:w-full" @close="() => selectGroup(null)"/>
   </div>
 </template>

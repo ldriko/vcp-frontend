@@ -69,7 +69,8 @@ onMounted(getGroup)
 </script>
 
 <template>
-  <console-back-button/>
+  <div class="mx-2">
+    <console-back-button/>
   <console-title>Edit Grup</console-title>
   <console-subtitle>Lengkapi detail grup yang ingin kamu ubah</console-subtitle>
   <vee-form :validation-schema="schema" @submit="submit">
@@ -81,7 +82,9 @@ onMounted(getGroup)
                name="description"
                placeholder="Masukkan deskripsi grup barumu"/>
     <div class="flex justify-end">
-      <app-button :is-loading="isLoading" type="submit">Simpan</app-button>
+      <app-button :is-loading="isLoading" type="submit" class="sm:w-full lg:w-1/5">Simpan</app-button>
     </div>
   </vee-form>
+  </div>
+  
 </template>

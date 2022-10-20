@@ -73,7 +73,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <console-back-button/>
+  <div class="mx-2">
+    <console-back-button/>
   <console-title>Buat Grup Baru</console-title>
   <console-subtitle>Lengkapi detail grup barumu</console-subtitle>
   <vee-form :validation-schema="schema" @submit="submit">
@@ -83,7 +84,9 @@ onMounted(() => {
     <text-area label="Deskripsi" name="description" placeholder="Masukkan deskripsi grup barumu"/>
     <text-field ref="codeInput" disabled fit label="Kode Grup" name="code"/>
     <div class="flex justify-end">
-      <app-button type="submit">Buat</app-button>
+      <app-button type="submit" class="lg:w-1/5 w-full">Buat</app-button>
     </div>
   </vee-form>
+  </div>
+ 
 </template>

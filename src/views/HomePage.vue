@@ -52,7 +52,7 @@ const searchJournals = () => router.push({
     </div>
 
     <div class="mx-auto">
-      <img src="../assets/diskusi.png" class="lg:px-16 sm:px-6 lg:mt-24 sm:mt-4" alt=""/>
+      <img src="../assets/diskusi.png" class="lg:px-16 sm:px-6 lg:mt-24 sm:mt-4 mx-auto" alt=""/>
       <p
           id="mengapa_kami"
           class="text-center text-regal-green font-semibold lg:mt-28 sm:mt-14 lg:text-2xl sm:text-xl"
@@ -69,7 +69,7 @@ const searchJournals = () => router.push({
       </div>
       <div class="flex sm:flex-col lg:flex-row text-black justify-center">
         <div class="w-80 h-60  hover:bg-regal-green hover:text-white sm:mx-auto lg:m-2  mt-5 rounded-lg p-3">
-          <img src="../assets/people.png" alt="" />
+          <img src="./../../public/icons/people.svg"  alt="" />
           <p class="mt-2 font-bold">Mudah dalam penggunaan</p>
           <p class="mt-3">
             Kami mempunyai tampilan yang mudah sehingga mulai kaum millenial

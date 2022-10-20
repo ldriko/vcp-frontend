@@ -1,6 +1,24 @@
 <script setup>
+import { inject, onMounted, ref } from 'vue'
 import ConsoleSidebar from '@/components/Console/ConsoleSidebar'
-import AppLogo from '../AppLogo.vue';</script>
+import AppLogo from '../AppLogo.vue';
+import { useRouter } from 'vue-router'
+import { useSessionStore } from '@/stores/session'
+
+const axios = inject('$axios')
+
+const router = useRouter()
+const sessionStore = useSessionStore()
+
+const logout = () => {
+  axios.post('/logout')
+      .then(() => {
+        router.push({ name: 'home' })
+        sessionStore.clear()
+      })
+      .catch(() => null)
+}
+</script>
 
 <template>
   <div class="min-h-screen flex">
@@ -35,6 +53,10 @@ import AppLogo from '../AppLogo.vue';</script>
             </li>
             <li class="py-2 hover:bg-almost-green">
               <router-link :to="{ name: 'groups'}"><p class="text-center">Group Saya</p></router-link>
+                
+            </li>
+            <li class="py-2 hover:bg-almost-green">
+             <p class="text-center" @click="logout">Keluar</p>
                 
             </li>
            

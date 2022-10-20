@@ -1,19 +1,19 @@
 <script setup>
-import TittleName from '@/components/TittleName.vue'
-import TextField from '@/components/Form/TextField'
-import { Form as VeeForm } from 'vee-validate'
-import AppButton from '@/components/AppButton'
-import * as Yup from 'yup'
-import { inject, ref } from 'vue'
+import TittleName from "@/components/TittleName.vue";
+import TextField from "@/components/Form/TextField";
+import { Form as VeeForm } from "vee-validate";
+import AppButton from "@/components/AppButton";
+import * as Yup from "yup";
+import { inject, ref } from "vue";
 
-import router from '@/router'
+import router from "@/router";
 
-const axios = inject('$axios')
+const axios = inject("$axios");
 
 const schema = Yup.object().shape({
-  title: Yup.string().required('judul harus diisi'),
-  short_desc: Yup.string().required('penulis harus diisi')
-})
+  title: Yup.string().required("judul harus diisi"),
+  short_desc: Yup.string().required("penulis harus diisi"),
+});
 
 const isLoading = ref(false);
 
@@ -36,32 +36,30 @@ const submit = async (values) => {
   }
 
   isLoading.value = false;
-}
+};
 </script>
 
 <template>
-  <TittleName title="Tambahkan Jurnal Baru" />
-  <p>Sebelum kamu masuk ke Jourid pastikan daftar dahulu ya</p>
+  <div class="mx-2">
+    <TittleName title="Tambahkan Jurnal Baru" />
+    <p>Sebelum kamu masuk ke Jourid pastikan daftar dahulu ya</p>
 
-  <vee-form :validation-schema="schema" @submit="submit">
-    <text-field
-      label="Judul Jurnal Kamu"
-      name="title"
-      placeholder="Masukkan judul Jurnal kamu"
-    />
+    <vee-form :validation-schema="schema" @submit="submit">
+      <text-field
+        label="Judul Jurnal Kamu"
+        name="title"
+        placeholder="Masukkan judul Jurnal kamu"
+      />
 
-    <text-field
-      label="Secercah isi jurnal kamu"
-      name="short_desc"
-      placeholder="Masukkan judul Jurnal kamu"
-    />
+      <text-field
+        label="Secercah isi jurnal kamu"
+        name="short_desc"
+        placeholder="Masukkan judul Jurnal kamu"
+      />
 
-    <input type="file" ref="myFile" />
+      <input type="file" ref="myFile" />
 
-    <app-button
-      color="primary"
-      type="submit"
-      >Simpan</app-button
-    >
-  </vee-form>
+      <app-button color="primary" type="submit">Simpan</app-button>
+    </vee-form>
+  </div>
 </template>
