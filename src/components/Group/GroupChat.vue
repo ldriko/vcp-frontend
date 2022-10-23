@@ -158,19 +158,6 @@ onUnmounted(() => {
         <div>{{ journal.short_desc }}</div>
       </div>
       <div class="flex gap-3">
-        <div class="relative">
-          <div v-if="showJournalCodeInput"
-               class="text-black absolute bg-white rounded-xl p-4 border border-solid bottom-full left-0 w-auto text-start mb-2 shadow">
-            <label class="mb-2 block">Masukkan kode jurnal yang ingin ditambahkan</label>
-            <div class="font-semibold select-none flex gap-2">
-              <input v-model="journalCode" class="border border-solid rounded-lg p-2 bg-white" type="text">
-              <app-button fit @click="getJournal">Tambah</app-button>
-            </div>
-          </div>
-          <app-button class="min-h-full" fit @click="() => showJournalCodeInput = !showJournalCodeInput">
-            <app-icon class="max-w-none" name="document-text"/>
-          </app-button>
-        </div>
         <input v-model="message"
                class="border border-solid rounded-lg p-4 w-full"
                placeholder="Ketik disini"
