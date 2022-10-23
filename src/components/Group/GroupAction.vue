@@ -34,6 +34,7 @@ const setShowCopiedText = (value) => {
          class="text-black absolute bg-white rounded-xl p-2 border border-solid top-full right-0 w-auto text-start mt-2 shadow">
       <ul>
         <li class="p-2 font-semibold select-none" @click="() => setShowCopiedText(true)">
+          <div class="text-xs mb-1">Bagikan kode dibawah ini untuk mengundang</div>
           <input :value="props.group.code"
                  class="border border-solid rounded-lg p-2 cursor-pointer bg-white hover:bg-gray-100 transition active:scale-95"
                  readonly
