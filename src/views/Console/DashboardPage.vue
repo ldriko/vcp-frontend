@@ -70,7 +70,7 @@ onMounted(() => {
       </ul>
     </div>
     <div class="lg:col-span-3 sm:col-span-12 lg:col-start-5 lg:m-0 sm:m-2  mt-20">
-      <div class="bg-regal-green text-white rounded-tl-3xl rounded-tr-lg rounded-br-3xl rounded-bl-lg shadow-xl shadow-soft-green overflow-hidden">
+      <!-- <div class="bg-regal-green text-white rounded-tl-3xl rounded-tr-lg rounded-br-3xl rounded-bl-lg shadow-xl shadow-soft-green overflow-hidden">
         <div class="p-6">
           <p class="bg-almost-green w-max p-1 rounded-md">Ilmu sosial</p>
           <p class="mt-4">Oleh : Imam Santoso</p>
@@ -82,7 +82,7 @@ onMounted(() => {
             Download
           </button>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
   <div class="bg-gray-green py-7 px-7 rounded-xl mt-10">
