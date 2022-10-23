@@ -8,9 +8,12 @@ import { inject, ref } from 'vue'
 import { useSessionStore } from '@/stores/session'
 import router from '@/router'
 import AppLogo from '@/components/AppLogo'
+import { useAlertStore } from '@/stores/alert'
+import AppAlert from '@/components/AppAlert'
 
 const axios = inject('$axios')
 const sessionStore = useSessionStore()
+const alertStore = useAlertStore()
 
 const schema = Yup.object().shape({
   name: Yup.string().required('Nama harus diisi'),
@@ -47,7 +50,10 @@ const submit = async (values) => {
 
     await router.push({ name: 'console-dashboard' })
   } catch (e) {
-    console.log(e)
+    alertStore.open({
+      type: 'error',
+      text: 'Oops, alamat email yang anda masukkan sudah terdaftar disini. Silakan gunakan alamat email lainnya'
+    })
   }
 
   isLoading.value = false
@@ -78,6 +84,7 @@ const submit = async (values) => {
     <div class="font-quicksand font-medium lg:w-3/5 sm:w-full lg:ml-10 sm:m-0 py-3">
       <tittle-name title="Yuk Daftar"/>
       <div class="mb-5">Sebelum kamu masuk ke Jourid, daftarkan akunmu terlebih dahulu ya</div>
+      <app-alert class="mb-4"/>
       <vee-form :validation-schema="schema" @submit="submit">
         <text-field
             label="Nama"

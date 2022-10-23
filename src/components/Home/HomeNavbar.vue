@@ -1,11 +1,11 @@
 <script setup>
-import { defineProps } from "vue";
-import { useSessionStore } from "@/stores/session";
-import AppLogo from "@/components/AppLogo";
-import HomeNavbarMenu from "@/components/Home/HomeNavbarMenu";
-import HomeNavbarMenuItem from "@/components/Home/HomeNavbarMenuItem";
-import AppButton from "@/components/AppButton";
-import AppAvatar from "@/components/AppAvatar";
+import { defineProps } from 'vue'
+import { useSessionStore } from '@/stores/session'
+import AppLogo from '@/components/AppLogo'
+import HomeNavbarMenu from '@/components/Home/HomeNavbarMenu'
+import HomeNavbarMenuItem from '@/components/Home/HomeNavbarMenuItem'
+import AppButton from '@/components/AppButton'
+import AppAvatar from '@/components/AppAvatar'
 
 
 function openNav() {
@@ -25,11 +25,11 @@ function openNav() {
 const props = defineProps({
   hideMenu: {
     type: Boolean,
-    default: false,
-  },
-});
+    default: false
+  }
+})
 
-const sessionStore = useSessionStore();
+const sessionStore = useSessionStore()
 </script>
 
 <template>
@@ -50,10 +50,6 @@ const sessionStore = useSessionStore();
         ><a href="#cara_penggunaan">Cara Penggunaan</a>
       </home-navbar-menu-item>
     </home-navbar-menu>
-
-    
-
-    
     <div class="inline-flex gap-4 items-center">
       <template v-if="sessionStore.isLoggedIn">
         <app-avatar />
@@ -62,7 +58,6 @@ const sessionStore = useSessionStore();
         >
       </template>
       <template v-else>
-
         <div class="block flex">
           <div class="w-1/2">
             <app-button @click="$router.push({ name: 'login' })"
@@ -78,7 +73,6 @@ const sessionStore = useSessionStore();
             >
           </div>
         </div>
-       
       </template>
     </div>
   </div>
@@ -91,28 +85,28 @@ const sessionStore = useSessionStore();
         </div>
 
             <button class="hidden lg:block bg-gradient-to-r text-white from-lime-green to-bright-cyan py-2 px-5 rounded-3xl">Request Invite</button>
-       
+
 
     </header>
 
     <div class="bg-regal-green relative mt-3 mx-3 text-white  rounded-md lg:hidden hidden" id="open">
         <ul>
           <li class="py-2 text-center hover:bg-almost-green">
-             
+
               <a href="">beranda</a>
             </li>
             <li class="py-2 text-center hover:bg-almost-green">
               <a href="#mengapa_kami">Mengapa Kami</a>
-              
+
             </li>
             <li class="py-2 text-center hover:bg-almost-green">
               <a href="#fitur_kami">Fitur Kami</a>
-              
+
             </li>
-           
+
             <li class="py-2 text-center hover:bg-almost-green">
               <a href="#cara_penggunaan">Cara Penggunaan</a>
-                
+
             </li>
             <div v-if="sessionStore.isLoggedIn" class="flex mx-20 py-2">
               <app-avatar />
@@ -123,18 +117,16 @@ const sessionStore = useSessionStore();
             <div v-else>
               <li class="py-2 text-center hover:bg-almost-green">
               <button  @click="$router.push({ name: 'login' })">Masuk</button>
-                
+
             </li>
             <li class="py-2 text-center hover:bg-almost-green">
               <button @click="$router.push({ name: 'register' })">Register</button>
-           
+
             </li>
             </div>
-            
-           
+
+
         </ul>
     </div>
- 
+
 </template>
-
-

@@ -2,15 +2,17 @@
 import { Form as VeeForm } from 'vee-validate'
 import AppLogo from '@/components/AppLogo'
 import * as Yup from 'yup'
-import TittleName from '@/components/TittleName.vue'
 import TextField from '@/components/Form/TextField'
 import AppButton from '@/components/AppButton'
 import { inject, ref } from 'vue'
 import { useSessionStore } from '@/stores/session'
 import router from '@/router'
+import AppAlert from '@/components/AppAlert'
+import { useAlertStore } from '@/stores/alert'
 
 const axios = inject('$axios')
 const sessionStore = useSessionStore()
+const alertStore = useAlertStore()
 
 const schema = Yup.object().shape({
   email: Yup.string().required('Alamat email harus diisi'),
@@ -36,7 +38,10 @@ const submit = async (values) => {
 
     await router.push({ name: 'console-dashboard' })
   } catch (e) {
-    console.log(e)
+    alertStore.open({
+      type: 'error',
+      text: 'Yahh, Detil akun yang kamu berikan belum terdaftar disini. Yuk daftar dulu'
+    })
   }
 
   isLoading.value = false
@@ -60,6 +65,7 @@ const submit = async (values) => {
     <div class="font-quicksand font-medium lg:w-3/5 sm:px-2 sm:w-full lg:ml-10  py-3">
       <p class="text-2xl ">Selamat Datang</p>
       <div class="mb-5">Masukkan detil akunmu terlebih dahulu</div>
+      <app-alert class="mb-4"/>
       <vee-form :validation-schema="schema" @submit="submit">
         <text-field
             class="w-full"
