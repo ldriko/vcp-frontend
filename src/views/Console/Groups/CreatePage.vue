@@ -61,7 +61,7 @@ const submit = async (values) => {
   formData.append('code', code.value)
 
   await axios.post('/groups', formData)
-      .then(() => router.push({ name: 'groups' }))
+      .then(() => router.push({ name: 'groups-create-success', params: { code: code.value } }))
       .catch(() => isLoading.value = false)
 }
 
@@ -75,18 +75,18 @@ onMounted(() => {
 <template>
   <div class="mx-2">
     <console-back-button/>
-  <console-title>Buat Grup Baru</console-title>
-  <console-subtitle>Lengkapi detail grup barumu</console-subtitle>
-  <vee-form :validation-schema="schema" @submit="submit">
-    <label class="font-semibold block mb-2">Gambar profil grup</label>
-    <picture-picker v-model="picture" class="mb-5"/>
-    <text-field label="Nama Grup" name="title" placeholder="Masukkan nama grup barumu"/>
-    <text-area label="Deskripsi" name="description" placeholder="Masukkan deskripsi grup barumu"/>
-    <text-field ref="codeInput" disabled fit label="Kode Grup" name="code"/>
-    <div class="flex justify-end">
-      <app-button type="submit" class="lg:w-1/5 w-full">Buat</app-button>
-    </div>
-  </vee-form>
+    <console-title>Buat Grup Baru</console-title>
+    <console-subtitle>Lengkapi detail grup barumu</console-subtitle>
+    <vee-form :validation-schema="schema" @submit="submit">
+      <label class="font-semibold block mb-2">Gambar profil grup</label>
+      <picture-picker v-model="picture" class="mb-5"/>
+      <text-field label="Nama Grup" name="title" placeholder="Masukkan nama grup barumu"/>
+      <text-area label="Deskripsi" name="description" placeholder="Masukkan deskripsi grup barumu"/>
+      <text-field ref="codeInput" disabled fit label="Kode Grup" name="code"/>
+      <div class="flex justify-end">
+        <app-button type="submit" class="lg:w-1/5 w-full">Buat</app-button>
+      </div>
+    </vee-form>
   </div>
- 
+
 </template>

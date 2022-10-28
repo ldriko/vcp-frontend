@@ -22,6 +22,10 @@ const props = defineProps({
   placeholder: {
     type: String,
     default: ''
+  },
+  smallDescription: {
+    type: String,
+    default: null
   }
 })
 
@@ -62,6 +66,7 @@ defineExpose({
         @blur="handleBlur"
         @input="handleChange"
     />
+    <small v-if="props.smallDescription" class="font-medium">{{ props.smallDescription }}</small>
     <small v-show="errorMessage || meta.valid" class="text-red-400">
       {{ errorMessage || successMessage }}
     </small>

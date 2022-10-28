@@ -38,7 +38,11 @@ const props = defineProps({
   inputClass: {
     type: String,
     default: null
-}
+  },
+  smallDescription: {
+    type: String,
+    default: null
+  }
 })
 
 const input = ref(null)
@@ -87,6 +91,7 @@ defineExpose({
           @input="handleChange"
       />
     </div>
+    <small v-if="props.smallDescription" class="font-medium">{{ props.smallDescription }}</small>
     <small class="text-red-400" v-show="errorMessage || meta.valid">
       {{ errorMessage || successMessage }}
     </small>

@@ -1,5 +1,5 @@
 <script setup>
-import { inject, onMounted, ref } from 'vue'
+import { inject } from 'vue'
 import ConsoleSidebar from '@/components/Console/ConsoleSidebar'
 import AppLogo from '../AppLogo.vue';
 import { useRouter } from 'vue-router'
@@ -28,41 +28,46 @@ const logout = () => {
         <div class="flex justify-between items-center mx-2">
           <app-logo/>
 
-          <img src="./../../assets/icon-hamburger.svg" id="btnOpen" class="lg:hidden  w-5 h-5"  @click="openNav()" alt="">
-          <img src="./../../assets/icon-close.svg" id="btnHide" class="lg:block hidden w-5 h-5" @click="closeNav()"  alt="">
+          <img src="./../../assets/icon-hamburger.svg" id="btnOpen" class="lg:hidden  w-5 h-5" @click="openNav()"
+               alt="">
+          <img src="./../../assets/icon-close.svg" id="btnHide" class="lg:block hidden w-5 h-5" @click="closeNav()"
+               alt="">
         </div>
 
-            <button class="hidden lg:block bg-gradient-to-r text-white from-lime-green to-bright-cyan py-2 px-5 rounded-3xl">Request Invite</button>
-       
+        <button
+            class="hidden lg:block bg-gradient-to-r text-white from-lime-green to-bright-cyan py-2 px-5 rounded-3xl">
+          Request Invite
+        </button>
 
-    </header>
 
-    <div class="bg-regal-green relative mt-3 mx-3 text-white  rounded-md lg:hidden hidden" id="open">
+      </header>
+
+      <div class="bg-regal-green relative mt-3 mx-3 text-white  rounded-md lg:hidden hidden" id="open">
         <ul>
-            <li class="py-2 hover:bg-almost-green">
-              <router-link :to="{ name: 'console-dashboard'}"><p class="text-center">Beranda</p></router-link>
-              
-            </li>
-            <li class="py-2 hover:bg-almost-green">
-              <router-link :to="{ name: 'journals-search'}">  <p class="text-center">Temukan Jurnal</p></router-link>
-              
-            </li>
-            <li class="py-2 hover:bg-almost-green">
-              <router-link :to="{ name: 'journals-manage'}"> <p class="text-center">Jurnal Saya</p></router-link>
-               
-            </li>
-            <li class="py-2 hover:bg-almost-green">
-              <router-link :to="{ name: 'groups'}"><p class="text-center">Group Saya</p></router-link>
-                
-            </li>
-            <li class="py-2 hover:bg-almost-green">
-             <p class="text-center" @click="logout">Keluar</p>
-                
-            </li>
-           
+          <li class="py-2 hover:bg-almost-green">
+            <router-link :to="{ name: 'console-dashboard'}"><p class="text-center">Beranda</p></router-link>
+
+          </li>
+          <li class="py-2 hover:bg-almost-green">
+            <router-link :to="{ name: 'journals-search'}"><p class="text-center">Temukan Jurnal</p></router-link>
+
+          </li>
+          <li class="py-2 hover:bg-almost-green">
+            <router-link :to="{ name: 'journals-manage'}"><p class="text-center">Jurnal Saya</p></router-link>
+
+          </li>
+          <li class="py-2 hover:bg-almost-green">
+            <router-link :to="{ name: 'groups'}"><p class="text-center">Group Saya</p></router-link>
+
+          </li>
+          <li class="py-2 hover:bg-almost-green">
+            <p class="text-center" @click="logout">Keluar</p>
+
+          </li>
+
         </ul>
-    </div>
- 
+      </div>
+
 
       <slot/>
     </div>
@@ -70,17 +75,17 @@ const logout = () => {
 </template>
 
 <script>
-   function openNav() {
-        document.getElementById("open").classList.remove("hidden");
-        document.getElementById("btnOpen").classList.add("hidden");
-        document.getElementById("btnHide").classList.add("block");
-        document.getElementById("btnHide").classList.remove("hidden");
-    }
+function openNav() {
+  document.getElementById("open").classList.remove("hidden");
+  document.getElementById("btnOpen").classList.add("hidden");
+  document.getElementById("btnHide").classList.add("block");
+  document.getElementById("btnHide").classList.remove("hidden");
+}
 
-    function closeNav(){
-        document.getElementById("open").classList.remove("block");
-        document.getElementById("open").classList.add("hidden");
-        document.getElementById("btnOpen").classList.remove("hidden");
-        document.getElementById("btnHide").classList.toggle("hidden");
-    }
+function closeNav() {
+  document.getElementById("open").classList.remove("block");
+  document.getElementById("open").classList.add("hidden");
+  document.getElementById("btnOpen").classList.remove("hidden");
+  document.getElementById("btnHide").classList.toggle("hidden");
+}
 </script>

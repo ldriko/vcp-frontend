@@ -37,7 +37,7 @@ const sessionStore = useSessionStore()
     class="lg:flex l sm:hidden px-10 lg:px-16 py-10 items-center justify-between font-semibold" id="beranda"
   >
     <app-logo />
-   
+
     <home-navbar-menu v-if="!hideMenu">
       <home-navbar-menu-item href="#beranda">Beranda</home-navbar-menu-item>
       <home-navbar-menu-item>
@@ -58,7 +58,7 @@ const sessionStore = useSessionStore()
         >
       </template>
       <template v-else>
-        <div class="block flex">
+        <div class="block flex gap-4">
           <div class="w-1/2">
             <app-button @click="$router.push({ name: 'login' })"
               >Masuk</app-button

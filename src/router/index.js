@@ -42,6 +42,22 @@ const routes = [
     },
     children: [
       {
+        path: 'profile',
+        name: 'profile',
+        component: () => import('@/views/Console/ProfilePage'),
+        meta: {
+          requiresAuth: true
+        }
+      },
+      {
+        path: 'profile/edit',
+        name: 'profile-edit',
+        component: () => import('@/views/Console/ProfileEditPage'),
+        meta: {
+          requiresAuth: true
+        }
+      },
+      {
         path: 'dashboard',
         name: 'console-dashboard',
         component: () => import('@/views/Console/DashboardPage'),
@@ -61,6 +77,22 @@ const routes = [
         path: 'journals/create',
         name: 'journals-create',
         component: () => import('@/views/Console/Journals/CreatePage'),
+        meta: {
+          requiresAuth: true
+        }
+      },
+      {
+        path: 'journals/create/success',
+        name: 'journals-create-success',
+        component: () => import('@/views/Console/Journals/CreateSuccessPage'),
+        meta: {
+          requiresAuth: true
+        }
+      },
+      {
+        path: 'journals/edit/success',
+        name: 'journals-edit-success',
+        component: () => import('@/views/Console/Journals/EditSuccessPage'),
         meta: {
           requiresAuth: true
         }
@@ -109,6 +141,22 @@ const routes = [
         path: 'groups/:id/edit',
         name: 'groups-edit',
         component: () => import('@/views/Console/Groups/EditPage'),
+        meta: {
+          requiresAuth: true
+        }
+      },
+      {
+        path: 'groups/create/:code/success',
+        name: 'groups-create-success',
+        component: () => import('@/views/Console/Groups/CreateSuccessPage'),
+        meta: {
+          requiresAuth: true
+        }
+      },
+      {
+        path: 'groups/edit/:code/success',
+        name: 'groups-edit-success',
+        component: () => import('@/views/Console/Groups/EditSuccessPage'),
         meta: {
           requiresAuth: true
         }

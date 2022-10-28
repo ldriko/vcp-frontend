@@ -7,12 +7,15 @@ import { useRoute, useRouter } from 'vue-router'
 import HomeNavbar from '@/components/Home/HomeNavbar'
 import { useSessionStore } from '@/stores/session'
 import ShareJournalButton from '@/components/Journal/ShareJournalButton'
+import AppButton from "@/components/AppButton";
 
 const axios = inject('$axios')
+const dayjs = inject('$dayjs')
 const axiosBaseURL = axios.defaults.baseURL
 const route = useRoute()
 const router = useRouter()
 const sessionStore = useSessionStore()
+const baseURL = process.env.VUE_APP_JOURNAL_REFERENCE_URL
 
 const search = ref(route.query.q ?? null)
 const searchQuery = ref(route.query.q ?? null)
@@ -62,7 +65,22 @@ const fetchGroups = async () => {
   userGroups.value = response?.data ?? []
 }
 
-const downloadJournal = ({ code }) => window.open(`${axiosBaseURL}/journals/${code}/pdf?is_download=1`)
+const downloadJournal = ({ code }) => window.open(`${ axiosBaseURL }/journals/${ code }/pdf?is_download=1`)
+
+const journalCiteCopied = ref(null)
+const journalCiteCopyTimeout = ref(null)
+const citeJournal = (journal) => {
+  const publishYear = dayjs(journal.published_at).year()
+  const journalLink = `${ baseURL }/${ journal.code }`
+
+  if (journalCiteCopyTimeout.value) clearTimeout(journalCiteCopyTimeout.value)
+
+  journalCiteCopied.value = journal.code
+
+  navigator.clipboard.writeText(`${journal.author_name} (${publishYear}). ${journal.title}. ${journalLink}`)
+
+  journalCiteCopyTimeout.value = setTimeout(() => journalCiteCopied.value = null, 1500)
+}
 
 onMounted(() => {
   fetchCategories()
@@ -80,14 +98,14 @@ const type = route.params.type
       <console-title class="mb-2">Temukan Jurnal</console-title>
       <console-subtitle>Cari jurnal yang kamu inginkan dengan mengisi pencarian berikut</console-subtitle>
     </div>
-   
-    <div class="lg:flex flex-row gap-10 mt-8 mx-4">
+
+    <div class="lg:flex flex-row gap-10 mt-8">
       <div class="flex-grow">
-        <div class="border border-min-gray rounded-xl flex p-1">
+        <div class="border border-solid border-gray-400 rounded-xl flex p-1 transition focus-within:bg-gray-100">
           <div class="flex-grow relative">
             <input
                 v-model="search"
-                class="w-full min-h-full px-5 outline-none"
+                class="w-full min-h-full px-5 outline-none bg-transparent"
                 placeholder="Masukkan judul jurnal"
                 type="text"
                 @keydown.enter="searchJournals"
@@ -97,7 +115,7 @@ const type = route.params.type
                       width="15"
                       @click="clearSearch"/>
           </div>
-          <button class="bg-regal-green lg:px-14 sm:px-2 py-5 rounded-xl text-white" @click="searchJournals">
+          <button class="bg-regal-green lg:px-14 sm:px-2 py-5 rounded-lg text-white font-bold" @click="searchJournals">
             Temukan
           </button>
         </div>
@@ -118,22 +136,32 @@ const type = route.params.type
               <p class="text-2xl font-semibold">{{ journal.title }}</p>
               <p class="text-sm mt-1">{{ journal.short_desc }}</p>
             </div>
-            <div class="flex gap-4">
+            <div class="flex gap-4 justify-between items-center">
               <div class="lg:flex sm:grid">
-                <button :class="{'bg-gray-100 text-black': !sessionStore.isLoggedIn, 'bg-regal-green text-white': sessionStore.isLoggedIn}"
-                      class="text-sm rounded px-4 m-1 py-2 items-center flex gap-2 active:scale-95 transition"
-                      @click="() => showJournal(journal)">
-                <app-icon :name="sessionStore.isLoggedIn ? 'document-text' : 'document-text-black'" width="20"/>
-                Buka {{ !sessionStore.isLoggedIn ? ' : Masuk terlebih dahulu' : '' }}
-              </button>
-              <button class="bg-regal-green text-white m-1 text-sm rounded px-4 py-2 items-center flex gap-2 active:scale-95 transition"
-                      @click="() => downloadJournal(journal)">
-                <app-icon name="document-download-white" width="20"/>
-                Unduh
-              </button>
+                <button
+                    :class="{'bg-gray-100 text-black': !sessionStore.isLoggedIn, 'bg-regal-green text-white': sessionStore.isLoggedIn}"
+                    class="text-sm rounded px-4 m-1 py-2 items-center flex gap-2 active:scale-95 transition"
+                    @click="() => showJournal(journal)">
+                  <app-icon :name="sessionStore.isLoggedIn ? 'document-text' : 'document-text-black'" width="20"/>
+                  Buka {{ !sessionStore.isLoggedIn ? ' : Masuk terlebih dahulu' : '' }}
+                </button>
+                <button
+                    class="bg-regal-green text-white m-1 text-sm rounded px-4 py-2 items-center flex gap-2 active:scale-95 transition"
+                    @click="() => downloadJournal(journal)">
+                  <app-icon name="document-download-white" width="20"/>
+                  Unduh
+                </button>
               </div>
-             
-              <share-journal-button :groups="userGroups" :journal="journal" class="ml-auto"/>
+              <div class="flex gap-4 items-center">
+                <app-button color="white" @click="citeJournal(journal)">
+                  <template v-if="journalCiteCopied === journal.code">
+                    <app-icon name="tick-square"/>
+                    Tersalin!
+                  </template>
+                  <template v-else>Kutip</template>
+                </app-button>
+                <share-journal-button v-if="sessionStore.isLoggedIn" :groups="userGroups" :journal="journal"/>
+              </div>
             </div>
           </div>
         </template>

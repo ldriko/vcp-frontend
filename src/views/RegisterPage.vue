@@ -10,6 +10,7 @@ import router from '@/router'
 import AppLogo from '@/components/AppLogo'
 import { useAlertStore } from '@/stores/alert'
 import AppAlert from '@/components/AppAlert'
+import PicturePicker from "@/components/Form/PicturePicker";
 
 const axios = inject('$axios')
 const sessionStore = useSessionStore()
@@ -28,6 +29,8 @@ const schema = Yup.object().shape({
       .oneOf([Yup.ref('password')], 'Konfirmasi password tidak sesuai')
 })
 
+const picture = ref(null)
+
 const isLoading = ref(false)
 
 const gotoLogin = () => router.push('/login')
@@ -39,11 +42,20 @@ const submit = async (values) => {
 
   await axios.get('/../sanctum/csrf-cookie')
 
+  const formData = new FormData()
+
+  for (const key in values) {
+    formData.append(key, values[key])
+  }
+
+  if (picture.value !== null) {
+    formData.append('picture', picture.value)
+  }
+
+  formData.append('gender', 0)
+
   try {
-    const { data } = await axios.post('/register', {
-      ...values,
-      gender: 0
-    })
+    const { data } = await axios.post('/register', formData)
 
     sessionStore.setUser(data)
     sessionStore.setIsLoggedIn(true)
@@ -62,7 +74,7 @@ const submit = async (values) => {
 
 <template>
   <div class="flex p-5 min-h-screen">
-    <div class="bg-regal-green w-2/5 rounded-md flex flex-col lg:block sm:hidden">
+    <div class="bg-regal-green w-2/5 rounded-md flex flex-col lg:flex sm:hidden">
       <div class="flex flex-col gap-6 p-9 flex-shrink-0">
         <app-logo white/>
         <p class="text-white font-bold text-3xl leading-10">
@@ -85,6 +97,10 @@ const submit = async (values) => {
       <tittle-name title="Yuk Daftar"/>
       <div class="mb-5">Sebelum kamu masuk ke Jourid, daftarkan akunmu terlebih dahulu ya</div>
       <app-alert class="mb-4"/>
+      <div class="flex flex-col gap-4 items-center justify-center mb-8">
+        <div class="font-semibold">Gambar Profil</div>
+        <picture-picker v-model="picture"/>
+      </div>
       <vee-form :validation-schema="schema" @submit="submit">
         <text-field
             label="Nama"
@@ -108,7 +124,7 @@ const submit = async (values) => {
             placeholder="Masukkan ulang password"
             type="password"
         />
-        <div class="mt-10 flex lg:flex-row sm:flex-col">
+        <div class="mt-10 flex lg:flex-row sm:flex-col items-center">
           <app-button
               :is-disabled="isLoading"
               :is-loading="isLoading"

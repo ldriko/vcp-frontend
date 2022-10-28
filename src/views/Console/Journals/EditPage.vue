@@ -85,7 +85,7 @@ const submit = async (values) => {
 
   try {
     await axios.post(`/journals/${journalCode}`, formData)
-    await router.push({ name: 'journals-manage' })
+    await router.push({ name: 'journals-edit-success' })
   } catch (e) {
     isLoading.value = false
   }
@@ -139,7 +139,7 @@ onMounted(getJournal)
                @change="handleFileChange">
       </div>
     </div>
-    <div class="flex gap-4 max-w-lg">
+    <div class="flex gap-4">
       <input v-model="termAccepted"
              class="accent-regal-green w-10 border border-solid border-gray-100 text-sm"
              type="checkbox">

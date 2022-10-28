@@ -50,7 +50,7 @@ const submit = async (values) => {
 
 <template>
   <div class="flex lg:flex-row sm:flex-col lg:p-5 sm:p-1 min-h-screen">
-    <div class="bg-regal-green lg:block sm:hidden lg:w-2/5 sm:w-full rounded-md flex flex-col">
+    <div class="bg-regal-green lg:flex sm:hidden lg:w-2/5 sm:w-full rounded-md flex flex-col">
       <div class="p-9 flex flex-col gap-6">
         <app-logo white/>
         <p class="text-white font-bold text-3xl leading-10">
@@ -63,7 +63,7 @@ const submit = async (values) => {
       <img alt="" class="mt-auto" src="../assets/login-new.png"/>
     </div>
     <div class="font-quicksand font-medium lg:w-3/5 sm:px-2 sm:w-full lg:ml-10  py-3">
-      <p class="text-2xl ">Selamat Datang</p>
+      <p class="text-3xl font-bold">Selamat Datang</p>
       <div class="mb-5">Masukkan detil akunmu terlebih dahulu</div>
       <app-alert class="mb-4"/>
       <vee-form :validation-schema="schema" @submit="submit">
@@ -80,7 +80,7 @@ const submit = async (values) => {
             placeholder="Masukkan password yang ingin digunakan"
             type="password"
         />
-        <div class="mt-10 flex lg:flex-row sm:flex-col">
+        <div class="mt-10 flex lg:flex-row sm:flex-col items-center">
           <app-button
               :is-disabled="isLoading"
               :is-loading="isLoading"

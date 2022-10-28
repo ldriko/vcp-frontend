@@ -2,7 +2,7 @@
 import AppLogo from '@/components/AppLogo'
 import ConsoleSidebarMenu from '@/components/Console/ConsoleSidebarMenu'
 import ConsoleSidebarMenuItem from '@/components/Console/ConsoleSidebarMenuItem'
-import { inject } from 'vue'
+import { inject, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useSessionStore } from '@/stores/session'
 
@@ -10,6 +10,10 @@ const axios = inject('$axios')
 
 const router = useRouter()
 const sessionStore = useSessionStore()
+
+const isConfirmingLogout = ref(false)
+
+const confirmLogout = () => isConfirmingLogout.value = true
 
 const logout = () => {
   axios.post('/logout')
@@ -35,7 +39,21 @@ const logout = () => {
     </console-sidebar-menu>
     <img class="absolute top-18 left-16 " src="./../../assets/polaa.png" alt="">
     <console-sidebar-menu title="Lainnya">
-      <console-sidebar-menu-item icon="logout-white" @click="logout">Keluar Akun</console-sidebar-menu-item>
+      <console-sidebar-menu-item icon="profile-white" to="profile">Profile</console-sidebar-menu-item>
+      <console-sidebar-menu-item v-if="!isConfirmingLogout" icon="logout-white" @click="confirmLogout">
+        Keluar Akun
+      </console-sidebar-menu-item>
+      <li v-else>
+        <div class="text-white mb-4 mx-2">Apakah kamu yakin mau keluar?</div>
+        <div class="flex gap-4">
+          <div class="bg-red-600 hover:bg-red-700 transition cursor-pointer text-white text-sm rounded-xl px-3 py-4 flex-grow text-center" @click="logout">
+            Keluar
+          </div>
+          <div class="bg-white hover:bg-gray-200 transition cursor-pointer text-black text-sm rounded-xl px-3 py-4 flex-grow text-center" @click="isConfirmingLogout = false">
+            Batal
+          </div>
+        </div>
+      </li>
     </console-sidebar-menu>
   </nav>
 

@@ -6,17 +6,11 @@ import App from './App.vue'
 import './assets/tailwind.css'
 import dayjs from 'dayjs'
 
-const pinia = createPinia()
-
 axios.defaults.withCredentials = true
 axios.defaults.baseURL = process.env.VUE_APP_API_BASE_URL
-// axios.defaults.baseURL = "http://localhost:8000/v1"
-
-
-
 
 createApp(App)
-  .use(pinia)
+  .use(createPinia())
   .use(router)
   .provide('$axios', axios)
   .provide('$dayjs', dayjs)

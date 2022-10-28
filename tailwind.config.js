@@ -21,6 +21,7 @@ module.exports = {
       },
       colors: {
         'regal-green' : '#0BA01A',
+        'regal-green-hover' : '#0A8B17',
         'min-gray' : '#4E4E4E',
         'light-green' :  '#00D215',
         'soft-green' : '#D0ECD3',

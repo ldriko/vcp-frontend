@@ -58,7 +58,7 @@ const submit = async (values) => {
 
   try {
     await axios.post('/journals', formData)
-    await router.push({ name: 'journals-manage' })
+    await router.push({ name: 'journals-create-success' })
   } catch (e) {
     isLoading.value = false
   }
@@ -68,51 +68,58 @@ const submit = async (values) => {
 <template>
   <div class="mx-2">
     <console-back-button/>
-  <console-title>Tambahkan Jurnal Baru</console-title>
-  <console-subtitle>Yuk, buat jurnal kamu sendiri. Mari berbagi pengetahuanmu dengan orang lain</console-subtitle>
-  <vee-form :validation-schema="schema" @submit="submit">
-    <text-field label="Judul Jurnal" name="title" placeholder="Masukkan judul jurnalmu" value="Teori A"/>
-    <text-field label="Penulis Jurnal" name="author_name" placeholder="Masukkan nama penulis jurnal" value="Heaven"/>
-    <journal-categories-picker v-model="categories" label="Kategori Jurnal"/>
-    <text-area label="Secercah Isi Jurnalmu"
-               name="short_desc"
-               placeholder="Deskripsikan jurnalmu dengan singkat"
-               value="Implementasi Teori A"/>
-    <text-field fit
-                label="Tahun Penerbitan Jurnal"
-                name="publishing_date"
-                placeholder="Masukkan tahun penerbitan jurnalmu"
-                type="date"
-                value="2022-01-01"/>
-    <label :for="name" class="font-semibold mb-2">Masukkan File Jurnalmu</label>
-    <div class="border border-solid rounded-lg p-8 flex justify-center gap-2 mb-4 cursor-pointer transition hover:bg-gray-100"
-         @click="openFilePicker">
-      <app-icon class="my-auto" name="document-upload"/>
-      <div>
-        <div class="font-semibold">{{ file !== null ? file.name : 'Upload File Disini' }}</div>
-        <div class="text-sm">
-          {{ file !== null ? 'Tekan kembali untuk merubah file' : 'File yang diupload harus berupa PDF' }}
+    <console-title>Tambahkan Jurnal Baru</console-title>
+    <console-subtitle>Yuk, buat jurnal kamu sendiri. Mari berbagi pengetahuanmu dengan orang lain</console-subtitle>
+    <vee-form :validation-schema="schema" @submit="submit">
+      <text-field label="Judul" name="title" placeholder="Masukkan judul jurnalmu" class="mb-10"/>
+      <text-field label="Nama Penulis"
+                  name="author_name"
+                  placeholder="Masukkan nama penulis jurnal"
+                  small-description="Masukkan nama panjang beserta gelar (untuk sitasi)"
+                  class="mb-10"/>
+      <journal-categories-picker v-model="categories" label="Kategori Jurnal" class="mb-10"/>
+      <text-area label="Secercah Isi Jurnalmu"
+                 name="short_desc"
+                 placeholder="Deskripsikan jurnalmu dengan singkat"
+                 class="mb-10"
+                 small-description="Deskripsikan jurnalmu untuk mempermudah pengguna menemukannya"/>
+      <text-field fit
+                  label="Tahun Penerbitan Jurnal"
+                  name="publishing_date"
+                  placeholder="Masukkan tahun penerbitan jurnalmu"
+                  type="date"
+                  value="2022-10-29"
+                  class="mb-10"/>
+      <label :for="name" class="font-semibold mb-2">Masukkan File Jurnalmu</label>
+      <div
+          class="border border-solid rounded-lg p-8 flex justify-center gap-2 mb-4 cursor-pointer transition hover:bg-gray-100"
+          @click="openFilePicker">
+        <app-icon class="my-auto" name="document-upload"/>
+        <div>
+          <div class="font-semibold">{{ file !== null ? file.name : 'Upload File Disini' }}</div>
+          <div class="text-sm">
+            {{ file !== null ? 'Tekan kembali untuk merubah file' : 'File yang diupload harus berupa PDF' }}
+          </div>
+          <input ref="fileInput"
+                 accept="application/pdf"
+                 class="absolute opacity-0"
+                 type="file"
+                 @change="handleFileChange">
         </div>
-        <input ref="fileInput"
-               accept="application/pdf"
-               class="absolute opacity-0"
-               type="file"
-               @change="handleFileChange">
       </div>
-    </div>
-    <div class="flex gap-4 max-w-lg">
-      <input v-model="termAccepted"
-             class="accent-regal-green w-10 border border-solid border-gray-100 text-sm"
-             type="checkbox">
-      <div>
-        Saya bertanggung jawab penuh atas <span class="text-regal-green font-medium">karya saya pribadi</span>, karena
-        karya yang saya upload <span class="text-regal-green font-medium">bukan milik orang lain</span>
+      <div class="flex gap-4">
+        <input v-model="termAccepted"
+               class="accent-regal-green w-10 border border-solid border-gray-100 text-sm"
+               type="checkbox">
+        <div>
+          Saya bertanggung jawab penuh atas <span class="text-regal-green font-medium">karya saya pribadi</span>, karena
+          karya yang saya upload <span class="text-regal-green font-medium">bukan milik orang lain</span>
+        </div>
       </div>
-    </div>
-    <div class="flex justify-end ">
-      <app-button type="submit" class=" sm:w-full lg:w-1/5 mt-2">Buat</app-button>
-    </div>
-  </vee-form>
+      <div class="flex justify-end ">
+        <app-button :is-loading="isLoading" :is-disabled="isLoading" type="submit" class="sm:w-full lg:w-1/5 mt-2">Buat</app-button>
+      </div>
+    </vee-form>
   </div>
-  
+
 </template>

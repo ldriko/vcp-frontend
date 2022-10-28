@@ -43,13 +43,13 @@ onMounted(() => {
       <console-title>Selamat Datang</console-title>
       <console-subtitle>Kamu bisa mengakses beberapa hal dari halaman ini</console-subtitle>
       <div class="flex justify-between items-center">
-        <p class="font-bold text-2xl">Grup Anda</p>
+        <p class="font-bold text-xl">Grup Anda</p>
         <p class="text-regal-green underline underline-offset-4 font-bold cursor-pointer"
            @click="() => $router.push({ name:'groups' })">
           Selengkapnya
         </p>
       </div>
-      <hr class="mt-3 mb-4">
+      <hr class="my-4">
       <ul>
         <li v-for="group in groups"
             :key="group.id"
@@ -61,15 +61,15 @@ onMounted(() => {
                       size="w-16 h-16"/>
           <app-avatar v-else size="w-16 h-16"/>
           <div class="flex-grow">
-            <p class="text-lg font-bold">{{ group.title }}</p>
-            <p class="font-normal text-base mt-1 whitespace-nowrap overflow-hidden text-ellipsis">
+            <p class="font-bold">{{ group.title }}</p>
+            <p class="font-normal text-sm mt-1 whitespace-nowrap overflow-hidden text-ellipsis">
               {{ group.description }}
             </p>
           </div>
         </li>
       </ul>
     </div>
-    <div class="lg:col-span-3 sm:col-span-12 lg:col-start-5 lg:m-0 sm:m-2  mt-20">
+    <div class="lg:col-span-3 sm:col-span-12 lg:col-start-5 lg:m-0 sm:m-2 mt-20">
       <!-- <div class="bg-regal-green text-white rounded-tl-3xl rounded-tr-lg rounded-br-3xl rounded-bl-lg shadow-xl shadow-soft-green overflow-hidden">
         <div class="p-6">
           <p class="bg-almost-green w-max p-1 rounded-md">Ilmu sosial</p>
@@ -85,7 +85,7 @@ onMounted(() => {
       </div> -->
     </div>
   </div>
-  <div class="bg-gray-green py-7 px-7 rounded-xl mt-10">
+  <div class="bg-gray-green py-7 px-7 rounded-xl mt-20">
     <div class="flex justify-between align-items mb-3">
       <p class="text-regal-green text-xl font-bold">Jurnal Anda</p>
       <p class="text-regal-green underline underline-offset-4 font-bold cursor-pointer"

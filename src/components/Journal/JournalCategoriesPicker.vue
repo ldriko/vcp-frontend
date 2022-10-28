@@ -43,17 +43,19 @@ onMounted(fetchCategories)
 </script>
 
 <template>
-  <label class="font-semibold mb-2 block font-semibold">{{ props.label }}</label>
-  <div class="flex flex-wrap gap-2 font-medium mb-4">
-    <div v-for="category in categories"
-         :key="category.id"
-         :class="{
+  <div>
+    <label class="font-semibold mb-2 block font-semibold">{{ props.label }}</label>
+    <div class="flex flex-wrap gap-2 font-medium mb-4">
+      <div v-for="category in categories"
+           :key="category.id"
+           :class="{
            'bg-gray-100 text-gray-600': selected.indexOf(category.id) === -1,
            'bg-soft-green text-regal-green ': selected.indexOf(category.id) > -1,
          }"
-         class=" py-2 px-3 rounded cursor-pointer transition active:scale-95"
-         @click="() => select(category.id)">
-      {{ category.name }}
+           class=" py-2 px-3 rounded cursor-pointer transition active:scale-95"
+           @click="() => select(category.id)">
+        {{ category.name }}
+      </div>
     </div>
   </div>
 </template>

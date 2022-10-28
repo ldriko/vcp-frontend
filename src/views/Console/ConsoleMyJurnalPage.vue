@@ -48,7 +48,6 @@ const fetchJournals = async () => {
       categories: selectedCategories.value
     }
   }).catch(() => null)
-  console.log(response)
   journals.value = response?.data.result ?? []
   count.value = response?.data.count ?? 0
 }
@@ -71,7 +70,6 @@ onMounted(() => {
     <console-title>Jurnal Saya</console-title>
     <console-subtitle>List jurnal yang telah kamu buat dan sebarkan</console-subtitle>
   </div>
-  
   <div class="flex gap-4">
     <div class="flex-grow flex overflow-x-auto gap-2 pb-2">
       <div v-for="category in categories"

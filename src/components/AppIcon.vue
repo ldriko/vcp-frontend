@@ -6,6 +6,10 @@ const props = defineProps({
     type: String,
     default: null
   },
+  class: {
+    type: String,
+    default: null
+  },
   width: {
     type: [String, Number],
     default: 25
@@ -18,5 +22,5 @@ const props = defineProps({
 </script>
 
 <template>
-  <img :src="`/icons/${props.name}.svg`" :alt="props.name" :width="props.width" :height="props.height" class="inline">
+  <img :src="`/icons/${props.name}.svg`" :alt="props.name" :class="props.class" :width="props.width" :height="props.height" class="inline">
 </template>
